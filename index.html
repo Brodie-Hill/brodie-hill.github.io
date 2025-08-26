@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        
+        <title>My Portfolio</title>
+        
+        <!-- link stylesheets -->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        
+        <!-- scripts -->
+         <script src="scripts/classtoggle.js" defer></script>
+         <script src="scripts/headerhider.js" defer></script>
+         <script src="scripts/hamburger.js" defer></script>
+
+    </head>
+    <body>
+        <header id="main">
+            <div class="content">
+                <!-- <h1 style="align-self:center;">Title</h1> -->
+                <button id="main-nav-mobile" class="hamburger" aria-label="Toggle navigation menu" onclick="toggleClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <nav>
+                <ul class="content" role="menu">
+                    <li role="menuitem"><a class="button" href="#projects" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">About</a></li>
+                    <li role="menuitem"><a class="button" href="projects.html" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Public Projects</a></li>
+                    <li role="menuitem"><a class="button" href="#contact" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="home" class="grad-primary">
+                <div class="content">
+                    <h1>Hi, I'm <span class="text-gradient grad-accent">Brodie</span></h1>
+                    <h2 class="lighter">Aspiring Software Engineer<br>Specializing in Game Development</h2>
+                    <a class="pill secondary" href="#"><h3><b class="gradient-text primary">View Featured Work</b></h3></a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; Brodie Hill 2025</p>
+        </footer>
+    </body>
+</html>
