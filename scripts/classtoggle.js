@@ -1,5 +1,3 @@
-const burgerTie = ".hamburger"
-
 function addClass(cls, ...selectors)
 {
     selectors.forEach(

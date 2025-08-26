@@ -10,9 +10,9 @@
 
     /* design colors */
     --color-primary: rgb(46, 118, 233);
-    --grad-primary: linear-gradient(135deg, #6a11cb, #2575fc);
+    --grad-primary: linear-gradient(135deg, #6a11cb, #1756c4);
     --color-accent: rgb(243, 149, 34);
-    --grad-accent: linear-gradient(135deg, #fcf40d, #d22888);
+    --grad-accent: linear-gradient(135deg, #f5f058, #fa5581);
     --color-light: rgb(238, 238, 255);
     --grad-light: linear-gradient(135deg, #f1f1f1, #bababa);
     --color-dark: rgb(17, 17, 34);
@@ -20,13 +20,13 @@
 
     --space-sector: 2em;
     --space-content: 1.25em;
-    --space-interaction: 1.5rem;
+    --space-interaction: 1.7rem;
     
     --trans-fast: 0.15s ease-out;
     --trans-med: 0.45s ease-out;
     --trans-slow: 0.75s ease-out;
 
-    --header-height: 6rem;
+    --header-height: 5.5rem;
 
     --filter-blur: blur(6px);
 }
@@ -68,7 +68,7 @@ header#main
     }
 }
 
-header#main#main>.content
+header#main>#header-main-content
 {
     height: var(--header-height);
     display: flex;
@@ -103,6 +103,14 @@ header#main nav
     }
 }
 
+header#main nav ul
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 header#main nav li
 {
     position: relative;
@@ -119,9 +127,14 @@ header#main nav li
 header#main nav a
 {
     font-size: 1.5em;
-    color: white;
+    color: #ddd;
     text-decoration: none;
     text-shadow: 0px 0px 5px black;
+
+    &:hover
+    {
+        color: white;
+    }
 }
 
 header#main nav.active
@@ -205,7 +218,7 @@ main
     height: 5%;
     width: 100%;
     background: white;
-    transition: transform var(--trans-med), opacity var(--trans-med);
+    transition: transform var(--trans-fast), opacity var(--trans-fast);
     transform-origin: 50% 50%;
     opacity: 1;
     box-shadow: 0px 0px 5px black;
@@ -263,8 +276,101 @@ section#home
 {
     /* ============ DESKTOP ============ */
 
+    :root
+    {
+        --trans-med: 0.2s ease-out;
+    }
+
     .content
     {
-        width: 1280px;
+        width: 1200px;
+    }
+
+    header#main:hover
+    {
+        /* same as .active from mobile */
+        background-color: var(--color-tint);
+        backdrop-filter: var(--filter-blur);
+    }
+    
+    header#main>#header-main-content
+    { }
+
+    header#main .hamburger
+    {
+        display: none;
+    }
+
+    header#main nav
+    {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        min-height: 100%;
+        transition: none;
+
+        &::before
+        {
+            content: none;
+            display: none;
+        }
+    }
+
+    header#main nav ul
+    {        
+        transition: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        height: var(--header-height);
+    }
+    
+    header#main nav li
+    {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        right: 0;
+        opacity: 1;
+        transition: background-size var(--trans-med);
+        transition-delay: 0.05s !important;
+        background-image: linear-gradient(0deg, #ffffff1a, transparent);
+        background-repeat: no-repeat;
+        background-position-y: 100%;
+        background-size: 100% 0%;
+
+        &::after
+        {
+            content: "";
+            pointer-events: none;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            bottom: 6px;
+            width: 0;
+            height: 2px;
+            background: #dcedff59;
+            transition: width var(--trans-med);
+        }
+    }
+
+    header#main nav li:hover
+    {
+        background-size: 100% 80%;
+
+        &::after
+        {
+            width: calc(100% - 2 * 6px);
+        }
+    }
+
+    header#main nav a
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;  
     }
 }

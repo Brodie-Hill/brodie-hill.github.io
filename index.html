@@ -12,14 +12,17 @@
         <link rel="stylesheet" href="css/styles.css" />
         
         <!-- scripts -->
-         <script src="scripts/classtoggle.js" defer></script>
+         <script src="scripts/classtoggle.js"></script>
          <script src="scripts/headerhider.js" defer></script>
-         <script src="scripts/hamburger.js" defer></script>
+
+         <script defer>
+            window.addEventListener("resize", () => {removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')});
+        </script>
 
     </head>
     <body>
         <header id="main">
-            <div class="content">
+            <div id="header-main-content" class="content" >
                 <!-- <h1 style="align-self:center;">Title</h1> -->
                 <button id="main-nav-mobile" class="hamburger" aria-label="Toggle navigation menu" onclick="toggleClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">
                     <span></span>
@@ -40,7 +43,7 @@
                 <div class="content">
                     <h1>Hi, I'm <span class="text-gradient grad-accent">Brodie</span></h1>
                     <h2 class="lighter">Aspiring Software Engineer<br>Specializing in Game Development</h2>
-                    <a class="pill secondary" href="#"><h3><b class="gradient-text primary">View Featured Work</b></h3></a>
+                    <a class="" href="#">View Featured Work</a>
                 </div>
             </section>
         </main>
