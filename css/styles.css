@@ -20,7 +20,8 @@
 
     --space-sector: 2em;
     --space-content: 1.25em;
-    --space-interaction: 1.7rem;
+    --space-interaction-main: 1.7rem;
+    --space-interaction-inline: 1.2em;
     
     --trans-fast: 0.15s ease-out;
     --trans-med: 0.45s ease-out;
@@ -77,6 +78,7 @@ header#main>#header-main-content
 
 header#main .hamburger
 {
+    padding: var(--space-interaction-main);
     margin-left: auto;
 }
 
@@ -125,7 +127,9 @@ header#main nav li
 }
 
 header#main nav a
-{
+{    
+    display: block;
+    padding: var(--space-interaction-main);
     font-size: 1.5em;
     color: #ddd;
     text-decoration: none;
@@ -135,6 +139,7 @@ header#main nav a
     {
         color: white;
     }
+    
 }
 
 header#main nav.active
@@ -186,16 +191,50 @@ main
 
 .lighter { opacity: 0.75; font-weight: 300; }
 
-.button
+.interaction
 {
-    display: block;
-    padding: var(--space-interaction);
+    transform: scale(1);
+    transition: transform var(--trans-fast);
+    
+    &:hover
+    {
+        transform: scale(1.1);
+    }
 }
 
 .pill
 {
-    padding: var(--space-interaction);
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    
+    align-items: center;
     border-radius: 99999px;
+    height: calc(3 * var(--space-interaction-inline));
+    overflow: hidden;
+
+    text-decoration: none;
+    color: var(--color-text);
+
+    *
+    {
+        margin-left: var(--space-interaction-inline);
+        margin-right: var(--space-interaction-inline);
+    }
+
+    img
+    {
+        height: calc(100% - 6px);
+        margin:3px;
+    }
+}
+
+.logo
+{
+    background-color: rgba(203, 222, 232, 0.3);
+
+    img#icon { display: block; }
+    img#full { display: none; }
 }
 
 .hamburger
@@ -206,7 +245,7 @@ main
     aspect-ratio: 1;
     background: transparent;
     border: none;
-    padding: var(--space-interaction);
+    padding: var(--space-interaction-inline);
     border-radius: 9999px;
 }
 
@@ -260,6 +299,23 @@ section#home
     font-weight: bold;
 }
 
+section#home #cta
+{
+    margin:3rem;
+}
+
+section#home #quicklinks
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2em;
+    position: absolute;
+    left:0;
+    bottom: 4em;
+    width: 100%;
+}
+
 
 @media screen and (min-width: 750px)
 {
@@ -271,7 +327,6 @@ section#home
     }
 }
 
-
 @media screen and (min-width: 1200px) and (pointer: fine)
 {
     /* ============ DESKTOP ============ */
@@ -279,6 +334,7 @@ section#home
     :root
     {
         --trans-med: 0.2s ease-out;
+        --space-interaction-inline: 1em;
     }
 
     .content
@@ -372,5 +428,24 @@ section#home
         display: flex;
         justify-content: center;
         align-items: center;  
+    }
+
+    .logo
+    {
+        background-color: rgba(203, 222, 232, 0.3);
+
+        img#icon { display: none; }
+        img#full { display: block; }
+    }
+
+    section#home #quicklinks
+    {    
+        opacity: 0.7;
+        transition: opacity var(--trans-fast);
+
+        &:hover
+        {
+            opacity: 1;
+        }
     }
 }
