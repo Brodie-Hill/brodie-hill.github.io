@@ -36,6 +36,7 @@ html
 {
     background-color: var(--color-bg);
     color: var(--color-text);
+    scroll-behavior: smooth;
 }
 
 body
@@ -60,7 +61,9 @@ header#main
     height: auto;
     transition:
         background-color var(--trans-med),
-        backdrop-filter var(--trans-med);
+        backdrop-filter var(--trans-med),
+        filter var(--trans-med),
+        opacity var(--trans-med);
 
     &.active
     {
@@ -216,13 +219,13 @@ main
     text-decoration: none;
     color: var(--color-text);
 
-    *
+    :not(img, span, div)
     {
         margin-left: var(--space-interaction-inline);
         margin-right: var(--space-interaction-inline);
     }
 
-    img
+    img, span, div
     {
         height: calc(100% - 6px);
         margin:3px;
@@ -314,6 +317,7 @@ section#home #quicklinks
     left:0;
     bottom: 4em;
     width: 100%;
+    transition: none;
 }
 
 
@@ -342,11 +346,20 @@ section#home #quicklinks
         width: 1200px;
     }
 
-    header#main:hover
+    header#main
     {
-        /* same as .active from mobile */
-        background-color: var(--color-tint);
-        backdrop-filter: var(--filter-blur);
+        &:hover
+        {
+            /* same as .active from mobile */
+            background-color: var(--color-tint);
+            backdrop-filter: var(--filter-blur);
+        }
+
+        &.collapse:not(:hover)
+        {
+            opacity: 0.4;
+            filter: blur(6px);
+        }
     }
     
     header#main>#header-main-content
