@@ -32,12 +32,12 @@ blockquote, figure, fieldset, legend, textarea, pre
 }
 
 /* Enforce heading sizes, some browsers change them */
-h1 {font-size:2em;}
-h2 {font-size:1.5em;}
-h3 {font-size:1.17em;}
-h4 {font-size:1em;}
-h5 {font-size:0.83em;}
-h6 {font-size:0.67em;}
+    h1 {font-size:2.0rem;}
+    h2 {font-size:1.75rem;}
+    h3 {font-size:1.5rem;}
+    h4 {font-size:1.17rem;}
+    h5 {font-size:0.83rem;}
+    h6 {font-size:0.67rem;}
 
 /* Clear default list styling */
 ol, ul
@@ -74,3 +74,27 @@ button, input, select, textarea
 button { cursor:pointer; }
 
 textarea { resize: none; }
+
+@media screen and (min-width: 750px)
+{
+    /* ============ TABLET ============ */
+
+    h1 {font-size:2.5rem;}
+    h2 {font-size:2rem;}
+    h3 {font-size:1.5rem;}
+    h4 {font-size:1.17rem;}
+    h5 {font-size:0.83rem;}
+    h6 {font-size:0.67rem;}
+}
+
+@media screen and (min-width: 1200px) and (pointer: fine)
+{
+    /* ============ DESKTOP ============ */
+    
+    h1 {font-size:2.5rem;}
+    h2 {font-size:2rem;}
+    h3 {font-size:1.5rem;}
+    h4 {font-size:1.17rem;}
+    h5 {font-size:0.83rem;}
+    h6 {font-size:0.67rem;}
+}

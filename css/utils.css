@@ -1,0 +1,290 @@
+:root
+{
+    /* document colors */
+    --color-bg: #0b0f14;
+    --color-text: #e8e8e8;
+    --color-tint: rgba(116, 136, 148, 0.45);
+    --color-tint-light: rgba(200, 215, 225, 0.35);
+    --color-tint-dark: rgba(0, 2, 5, 0.55);
+    /* design colors */
+    --color-primary: rgb(46, 118, 233);
+    --grad-primary: linear-gradient(135deg, #6a11cb, #1756c4);
+    --color-accent: rgb(243, 149, 34);
+    --grad-accent: linear-gradient(135deg, #f5f058, #fa5581);
+    --color-light: rgb(238, 238, 255);
+    --grad-light: linear-gradient(135deg, #f1f1f1, #bababa);
+    --color-dark: rgb(17, 17, 34);
+    --grad-dark: linear-gradient(135deg, #202e34, #0d111c);
+
+    /* spacing */
+    --spacing: 1.0;
+
+    --space-content: calc(var(--spacing) * 0.8rem);
+
+    --space-sector-inl: calc(var(--spacing) * 1.6rem);
+    --space-sector-blk: calc(var(--spacing) * 3.2rem);
+
+    --space-badge-inl: calc(var(--spacing) * 0.4em);
+    --space-badge-blk: calc(var(--spacing) * 0.7em);
+
+    --space-interaction-inl: calc(var(--spacing) * 0.8em);
+    --space-interaction-blk: calc(var(--spacing) * 1.2em);
+    
+    /* timings */
+    --trans-fast: 0.15s;
+    --trans-med: 0.35s;
+    --trans-slow: 0.55s;
+}
+
+
+html
+{
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    scroll-behavior: smooth;
+}
+
+/* ============ UTILITY LAYOUT ============ */
+
+.content
+{
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.content-gap { gap: var(--space-content); }
+
+.content-padding { padding: var(--space-content); }
+.content-padding-blk { padding-block: var(--space-content); }
+.content-padding-inl { padding-inline: var(--space-content); }
+.content-margin { margin: var(--space-content); }
+.content-margin-blk { margin-block: var(--space-content); }
+.content-margin-inl { margin-inline: var(--space-content); }
+
+.sector-padding { padding: var(--space-sector-inl) var(--space-sector-blk); }
+.sector-padding-blk { padding-block: var(--space-sector-blk); }
+.sector-padding-inl { padding-inline: var(--space-sector-inl); }
+.sector-margin { margin: var(--space-sector-inl) var(--space-sector-blk); }
+.sector-margin-blk { margin-block: var(--space-sector-blk); }
+.sector-margin-inl { margin-inline: var(--space-sector-inl); }
+
+.nopad-top { padding-top: 0; }
+.nopad-bot { padding-bottom: 0; }
+.nopad-lft { padding-left: 0; }
+.nopad-rgt { padding-right: 0; }
+
+.nomarg-top { margin-top: 0; }
+.nomarg-bot { margin-bottom: 0; }
+.nomarg-lft { margin-left: 0; }
+.nomarg-rgt { margin-right: 0; }
+
+.flex-vertical
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.flex-horizontal
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.grid-vertical
+{
+    display: grid;
+    justify-content: stretch;
+    grid-template-columns: repeat(2, auto);
+    grid-auto-flow: row;
+    grid-auto-rows: 100%;
+    overflow: visible scroll;
+    align-items: stretch;
+}
+
+.grid-horizontal
+{
+    display: grid;
+    justify-content: stretch;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow: auto visible;
+    align-items: stretch;
+}
+
+.square
+{
+    aspect-ratio: 1;
+}
+
+.badge, .chip, .btn
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: var(--space-badge-inl) var(--space-badge-blk);
+    text-decoration: none;
+}
+
+.chip
+{
+    border-radius: 50cqh;
+    overflow: hidden;
+}
+
+.btn
+{
+    padding: var(--space-interaction-inl) var(--space-interaction-blk);
+    text-decoration: none;
+}
+
+.logo
+{
+    background-color: var(--color-tint-light);
+    padding: 0;
+
+    img
+    {
+        height: calc(var(--space-badge-blk) * 2 + 1lh - 10px);
+        padding: 5px;
+    }
+    &.btn img
+    {
+        height: calc(var(--space-interaction-blk) * 2 + 1lh - 10px);
+    }
+    img#icon { display: block; }
+    img#full { display: none; }
+}
+
+.text-area
+{
+    padding: var(--space-content);
+    border: 1px solid var(--color-tint);
+    background: var(--color-tint-dark);
+    border-radius: var(--space-content);
+}
+
+.line-brk
+{
+    content: "";
+    position:absolute;
+    left: var(--space-content);
+    right: var(--space-content);
+    transform: translateY(-50%);
+    height: 2px;
+    background: var(--color-tint);
+}
+
+/* ============ UTILITY TEXT ============ */
+
+.text-gradient
+{
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.grad-primary { background-image: var(--grad-primary); }
+.grad-accent { background-image: var(--grad-accent); }
+.grad-light { background-image: var(--grad-light); }
+.grad-dark { background-image: var(--grad-dark); }
+
+.light
+{
+    opacity: 0.75;
+    font-weight: 300;
+}
+
+.heavy
+{
+    opacity: 1.0;
+    font-weight: 700;
+}
+
+.left { text-align: left; }
+
+.centered { text-align: center; }
+
+.right { text-align: right; }
+
+.large {font-size: 150%;}
+
+.small {font-size: 75%;}
+
+/* ============ UTILITY MEDIA ============ */
+
+.cover-bg
+{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+
+
+@media screen and (min-width: 750px)
+{
+    /* ============ TABLET ============ */
+
+    .content
+    {
+        width: 750px;
+    }
+
+    .grid-vertical
+    {
+        grid-auto-rows: 30%;
+    }
+
+    .grid-horizontal
+    {
+        grid-auto-columns: 30%;
+    }
+}
+
+@media screen and (min-width: 1200px) and (pointer: fine)
+{
+    /* ============ DESKTOP ============ */
+
+    .content
+    {
+        width: 1200px;
+    }
+
+    .btn
+    {
+        /* class to do the hover effects for interactions like buttons */
+
+        transform: scale(1);
+        transition: transform var(--trans-fast);
+
+        &:hover
+        {
+            transform: scale(1.1);
+        }
+    }
+    
+    .logo
+    {
+        img#icon { display: none; }
+        img#full { display: block; }
+    }
+    .grid-vertical
+    {
+        grid-auto-rows: 25%;
+    }
+
+    .grid-horizontal
+    {
+        grid-auto-columns: 25%;
+    }
+}

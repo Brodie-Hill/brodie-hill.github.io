@@ -1,0 +1,42 @@
+.hamburger
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 1;
+    background: transparent;
+    border: none;
+    border-radius: 9999px;
+}
+
+.hamburger span
+{
+    /* height must be a percentage for anim to translate correctly since
+    translation must be 50% of parent, but translate() is relative to self,
+    so we make self ralative to parent to fix this */
+    height: 5%;
+    width: 100%;
+    background: white;
+    transition-property: transform, opacity;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    box-shadow: 0px 0px 5px black;
+}
+
+.hamburger.active span
+{
+    transform: scaleX(0);
+    opacity: 0;
+
+    &:first-child
+    {
+        transform:  translate(0, calc(50%*(100/5 - 1))) rotate(45deg);
+        opacity: 1;
+    }
+
+    &:last-child
+    {
+        transform: translate(0px, calc(-50%*(100/5 - 1))) rotate(-45deg);
+        opacity: 1;
+    }
+}
