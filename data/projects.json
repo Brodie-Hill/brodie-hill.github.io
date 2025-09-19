@@ -19,8 +19,9 @@
         "name": "Portfolio Website",
         "date": "Aug-Sep 2025",
         "tags": [
-            "c++",
-            "xml"
+            "HTML",
+            "CSS",
+            "JavaScript"
         ],
         "blurb":
             "A static site made to centralize links to my best projects and work. Hosted on github pages.",
