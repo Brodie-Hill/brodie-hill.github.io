@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Unity",
+        "group": "Tools",
+        "proficiency": 85
+    },
+        {
+        "name": "Unreal Engine",
+        "group": "Tools",
+        "proficiency": 25
+    },
+        {
+        "name": "GameMaker",
+        "group": "Tools",
+        "proficiency": 60
+    },
+    {
+        "name": "Blender",
+        "group": "Tools",
+        "proficiency": 35
+    },
+    {
+        "name": "GIMP",
+        "group": "Tools",
+        "proficiency": 50
+    },
+    {
+        "name": "C#",
+        "group": "Languages",
+        "proficiency": 85
+    },
+    {
+        "name": "C++",
+        "group": "Languages",
+        "proficiency": 65
+    },
+    {
+        "name": "Java",
+        "group": "Languages",
+        "proficiency": 50
+    },
+    {
+        "name": "JavaScript",
+        "group": "Languages",
+        "proficiency": 25
+    },
+    {
+        "name": "HTML / XML",
+        "group": "Languages",
+        "proficiency": 70
+    },
+    {
+        "name": "CSS",
+        "group": "Languages",
+        "proficiency": 60
+    },
+    {
+        "name": "HLSL / GLSL",
+        "group": "Languages",
+        "proficiency": 45
+    },
+    {
+        "name": "OpenGL",
+        "group": "Tech / Libraries",
+        "proficiency": 65
+    },
+    {
+        "name": "Shader Development",
+        "group": "Tech / Libraries",
+        "proficiency": 50
+    },
+    {
+        "name": "Orbis SDK (PS4)",
+        "group": "Tech / Libraries",
+        "proficiency": 40
+    },
+    {
+        "name": "Steamworks",
+        "group": "Tech / Libraries",
+        "proficiency": 60
+    },
+    {
+        "name": "Multithreading",
+        "group": "Concepts / Practices",
+        "proficiency": 45
+    },
+    {
+        "name": "Networking (Multiplayer)",
+        "group": "Concepts / Practices",
+        "proficiency": 55
+    },
+    {
+        "name": "AI Programming",
+        "group": "Concepts / Practices",
+        "proficiency": 30
+    },
+    {
+        "name": "Physics Simulation",
+        "group": "Concepts / Practices",
+        "proficiency": 65
+    },
+    {
+        "name": "Procedural Generation",
+        "group": "Concepts / Practices",
+        "proficiency": 50
+    },
+    {
+        "name": "Git",
+        "group": "Tools",
+        "proficiency": 80
+    },
+    {
+        "name": "Agile / Scrum",
+        "group": "Concepts / Practices",
+        "proficiency": 70
+    },
+    {
+        "name": "UI/UX Design",
+        "group": "Concepts / Practices",
+        "proficiency": 55
+    }
+]

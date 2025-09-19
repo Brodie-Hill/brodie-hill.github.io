@@ -7,10 +7,10 @@
     --color-tint-light: rgba(200, 215, 225, 0.35);
     --color-tint-dark: rgba(0, 2, 5, 0.55);
     /* design colors */
-    --color-primary: rgb(46, 118, 233);
+    --color-primary: rgb(96, 157, 255);
     --grad-primary: linear-gradient(135deg, #6a11cb, #1756c4);
-    --color-accent: rgb(243, 149, 34);
-    --grad-accent: linear-gradient(135deg, #f5f058, #fa5581);
+    --color-accent: rgb(236, 148, 48);
+    --grad-accent: linear-gradient(135deg, #ff6648, #f1de4e);
     --color-light: rgb(238, 238, 255);
     --grad-light: linear-gradient(135deg, #f1f1f1, #bababa);
     --color-dark: rgb(17, 17, 34);
@@ -237,6 +237,39 @@ ul.timeline-vertical .bullet
     border-radius: 50cqh;
 }
 
+ul.progress-list
+{
+    list-style: none;
+    align-items: center;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content; /* 3 columns */
+    gap: var(--space-content); /* gap between columns and rows */
+
+    li
+    {
+        display: contents;
+    }
+}
+
+.progress-bar
+{
+    background: var(--color-tint);
+    height: 1lh; /* limit height so it wont stretch if the height is more than one row of text */
+    border-radius: 50cqh;
+    overflow: hidden;
+    box-shadow: 0 0 var(--space-content) rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar-fill
+{
+    display: block;
+    height: 100%;
+    width: 100%; /* will make it grow over time with js as we scroll to it */
+    transition: width var(--trans-slow) ease-in-out;
+    border-radius: 50cqh; /* must do this here as well as parent, because box shadow doesnt follow parent radius */
+}
+
+
 /* ============ UTILITY TEXT ============ */
 
 .text-gradient
@@ -245,6 +278,11 @@ ul.timeline-vertical .bullet
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.color-primary { color: var(--color-primary); }
+.color-accent { color: var(--color-accent); }
+.color-light { color: var(--color-light); }
+.color-dark { color: var(--color-dark); }
 
 .grad-primary { background-image: var(--grad-primary); }
 .grad-accent { background-image: var(--grad-accent); }
@@ -272,6 +310,7 @@ ul.timeline-vertical .bullet
 .large {font-size: 125%;}
 
 .small {font-size: 75%;}
+
 
 /* ============ UTILITY MEDIA ============ */
 

@@ -257,6 +257,32 @@ section#about article img
     margin: auto;
 }
 
+section#about .skill-name
+{
+    font-weight: bold;
+}
+
+section#about .skill-alias
+{
+    text-align: right;
+}
+
+section#about select#skill-category
+{
+    display: block;
+    font-weight: bolder;
+    background: none;
+    border: none;
+    border-radius: var(--space-content);
+    appearance: none;
+
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="%23333"><path d="M5 8L0 3h10z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+
+}
+
 @media screen and (min-width: 750px)
 {
     /* ============ TABLET ============ */

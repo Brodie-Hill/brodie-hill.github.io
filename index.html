@@ -17,6 +17,7 @@
          <script src="scripts/classtoggle.js"></script>
          <script src="scripts/headerhider.js" defer></script>
          <script src="scripts/projectloader.js" defer></script>
+         <script src="scripts/skillloader.js" defer></script>
 
          <script defer>
             window.addEventListener("resize", () => { removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav'); });
@@ -80,8 +81,13 @@
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Skills</h3>
                         <span class="line-brk"></span>
-                        <div class="content-padding-blk sector-padding-inl ">
-                            
+                        <div class="sector-padding-inl ">
+                            <select id="skill-category" class="content-margin-blk btn centered" style="margin-inline:auto;"" onchange="changeGroup(this.value)">
+                                <!-- populated by js -->
+                            </select>
+                            <div id="skills" class="content-margin-blk">
+                                <!-- populated by js -->
+                            </div>
                         </div>
                         <span class="line-brk"></span>
                     </div>

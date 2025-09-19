@@ -156,7 +156,7 @@ async function parseProjects()
     
     if (!container)
     {
-        console.error("No parent found top place project cards under!");
+        console.error("No parent found to place project cards under!");
         return;
     }
 
