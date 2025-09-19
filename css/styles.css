@@ -151,8 +151,7 @@ main
     border-radius: calc(2 * var(--space-content));
     overflow: hidden;
     border: 1px solid var(--color-tint);
-    background-image: var(--grad-dark);
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 var(--space-content) rgb(32, 57, 73);
 }
 
 .card-banner
@@ -176,6 +175,7 @@ main
 {
     flex: 1;
 }
+
 .card .text-area
 {
     opacity: 0.7;
@@ -190,6 +190,17 @@ main
 }
 
 /* ============ SECTIONS ============ */
+
+.pagebrk
+{
+    display: block;
+    height: 1.5rem;
+    background-image:
+        repeating-linear-gradient(45deg, black 0 1rem, transparent 1rem 2rem),
+        var(--grad-primary);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.75);
+    z-index: 3;position:relative;
+}
 
 section
 {
@@ -225,12 +236,33 @@ section#home #quicklinks
     transition: none;
 }
 
+section#about
+{
+    background: var(--grad-light);
+    color: black;
+}
+
+section#about article
+{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+section#about article img
+{
+    max-height: 12rem;
+    border-radius: 50cqh;
+    aspect-ratio: 1;
+    margin: auto;
+}
 
 @media screen and (min-width: 750px)
 {
     /* ============ TABLET ============ */
 
 }
+
 
 @media screen and (min-width: 1200px) and (pointer: fine)
 {

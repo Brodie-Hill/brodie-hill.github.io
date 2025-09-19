@@ -71,7 +71,7 @@ function genTagRow(tags)
 function genCard(project)
 {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("card", "grad-dark");
 
     const thumbnailSource = project.thumbnail || (project.media?.[0]);
 
