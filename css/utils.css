@@ -312,7 +312,7 @@ ul.progress-list li
 
 .left { text-align: left; }
 
-.centered { text-align: center; }
+.centered { text-align: center; align-self: center;}
 
 .right { text-align: right; }
 

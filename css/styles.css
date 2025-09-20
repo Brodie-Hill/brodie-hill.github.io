@@ -256,10 +256,11 @@ section#about article
 
 section#about article img
 {
-    max-height: 12rem;
+    max-height: 14rem;
     border-radius: 50cqh;
     aspect-ratio: 1;
-    margin: auto;
+    margin-inline: var(--space-sector-inl);
+    align-self: center;
 }
 
 section#about .skill-name
@@ -304,15 +305,29 @@ section#about select#skill-category
         display: flex;
         flex-direction: row;
         align-items: stretch;
-        flex-direction: row;
-
+gap: 0;
         div{
             flex: 1;
             position: relative;
         }
+        &:nth-child(even)
+        {
+            flex-direction: row;
+
+            img
+            {
+                margin-right: 0;
+            }
+        }
+
         &:nth-child(odd)
         {
             flex-direction: row-reverse;
+
+            img
+            {
+                margin-left: 0;
+            }
         }
     }
 }
