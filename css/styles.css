@@ -1,6 +1,6 @@
 :root
 {
-    --header-height: 5.5rem;
+    --header-height: 6.0rem;
 
     --filter-blur: blur(6px);
 }
@@ -25,8 +25,8 @@ body
 
 header#main
 {
-    --space-interaction-inl: var(--space-sector-inl);
-    --space-interaction-blk: var(--space-sector-inl);
+    --space-interaction-inl: 1.2rem;
+    --space-interaction-blk: 1.2rem;
 
     position: fixed;
     top: 0;
@@ -56,10 +56,20 @@ header#main>.content
 
 header#main .hamburger
 {
+    margin: var(--space-content);
     margin-left: auto;
     padding: var(--space-interaction-inl) var(--space-interaction-blk);
+    
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
 
-    * { transition-duration: var(--trans-fast); }
+    &.active
+    {
+        background-color: transparent;
+        backdrop-filter: none;
+    }
+
+    span { transition-duration: var(--trans-fast); }
 }
 
 header#main nav
@@ -137,11 +147,6 @@ main
     flex: 1;
 }
 
-.project-group
-{
-    
-}
-
 .card
 {
     display: flex;
@@ -151,7 +156,7 @@ main
     border-radius: calc(2 * var(--space-content));
     overflow: hidden;
     border: 1px solid var(--color-tint);
-    box-shadow: 0 0 var(--space-content) rgb(32, 57, 73);
+    box-shadow: var(--shadow-light-s);
 }
 
 .card-banner
@@ -198,7 +203,7 @@ main
     background-image:
         repeating-linear-gradient(45deg, black 0 1rem, transparent 1rem 2rem),
         var(--grad-primary);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.75);
+    box-shadow: var(--shadow-dark-l);
     z-index: 3;position:relative;
 }
 
@@ -260,33 +265,56 @@ section#about article img
 section#about .skill-name
 {
     font-weight: bold;
+    width: 30%;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    align-self: center;
 }
 
 section#about .skill-alias
 {
-    text-align: right;
+    align-self:center;
+    font-weight: bold;
+    color:white;
+    text-shadow: 1px 2px 2px black;
+    opacity: 0.7;
 }
 
 section#about select#skill-category
 {
     display: block;
-    font-weight: bolder;
-    background: none;
+    font-weight: bold;
     border: none;
+    cursor:pointer;
     border-radius: var(--space-content);
     appearance: none;
-
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="%23333"><path d="M5 8L0 3h10z"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
     padding-right: 30px;
-
 }
 
 @media screen and (min-width: 750px)
 {
     /* ============ TABLET ============ */
 
+    section#about article
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex-direction: row;
+
+        div{
+            flex: 1;
+            position: relative;
+        }
+        &:nth-child(odd)
+        {
+            flex-direction: row-reverse;
+        }
+    }
 }
 
 

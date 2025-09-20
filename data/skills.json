@@ -7,7 +7,7 @@
         {
         "name": "Unreal Engine",
         "group": "Tools",
-        "proficiency": 25
+        "proficiency": 10
     },
         {
         "name": "GameMaker",
@@ -65,7 +65,7 @@
         "proficiency": 65
     },
     {
-        "name": "Shader Development",
+        "name": "Shader Dev",
         "group": "Tech / Libraries",
         "proficiency": 50
     },

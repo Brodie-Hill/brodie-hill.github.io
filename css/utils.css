@@ -3,18 +3,30 @@
     /* document colors */
     --color-bg: #0b0f14;
     --color-text: #e8e8e8;
+    
     --color-tint: rgba(116, 136, 148, 0.45);
     --color-tint-light: rgba(200, 215, 225, 0.35);
     --color-tint-dark: rgba(0, 2, 5, 0.55);
     /* design colors */
     --color-primary: rgb(96, 157, 255);
     --grad-primary: linear-gradient(135deg, #6a11cb, #1756c4);
+
     --color-accent: rgb(236, 148, 48);
     --grad-accent: linear-gradient(135deg, #ff6648, #f1de4e);
+
     --color-light: rgb(238, 238, 255);
     --grad-light: linear-gradient(135deg, #f1f1f1, #bababa);
+
     --color-dark: rgb(17, 17, 34);
     --grad-dark: linear-gradient(135deg, #233c48, #0f1423);
+
+    --shadow-light-s: 0 0 var(--space-content) rgba(215, 240, 255, 0.3);
+    --shadow-light-m: 0 0 calc(2 * var(--space-content)) rgba(211, 242, 255, 0.5);
+    --shadow-light-l: 0 0 calc(3 * var(--space-content)) rgba(219, 244, 255, 0.7);
+
+    --shadow-dark-s: 0 0 var(--space-content) rgba(0, 0, 0, 0.3);
+    --shadow-dark-m: 0 0 calc(2 * var(--space-content)) rgba(0, 0, 0, 0.5);
+    --shadow-dark-l: 0 0 calc(3 * var(--space-content)) rgba(0, 0, 0, 0.7);
 
     /* spacing */
     --spacing: 1.0;
@@ -179,12 +191,6 @@ html
     background: var(--color-tint);
 }
 
-.avatar
-{
-    border-radius: 50cqh;
-    
-}
-
 ul.timeline-vertical
 {
     display: grid;
@@ -193,6 +199,7 @@ ul.timeline-vertical
     align-items: start;
     list-style: none;
 }
+
 ul.timeline-vertical .marker
 {
     display: flex;
@@ -240,28 +247,30 @@ ul.timeline-vertical .bullet
 ul.progress-list
 {
     list-style: none;
-    align-items: center;
-    display: grid;
-    grid-template-columns: min-content 1fr min-content; /* 3 columns */
-    gap: var(--space-content); /* gap between columns and rows */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-content);
+}
 
-    li
-    {
-        display: contents;
-    }
+ul.progress-list li
+{
+    display: flex;
+    gap: var(--space-content);
 }
 
 .progress-bar
 {
+    position: relative;
     background: var(--color-tint);
-    height: 1lh; /* limit height so it wont stretch if the height is more than one row of text */
     border-radius: 50cqh;
     overflow: hidden;
-    box-shadow: 0 0 var(--space-content) rgba(0, 0, 0, 0.2);
+    flex:1;
+    box-shadow: var(--shadow-dark-s);
 }
 
 .progress-bar-fill
-{
+{    
+    padding: var(--space-badge-inl) var(--space-badge-blk);
     display: block;
     height: 100%;
     width: 100%; /* will make it grow over time with js as we scroll to it */
@@ -325,6 +334,12 @@ ul.progress-list
     z-index: -1;
 }
 
+.shadow-light-s { box-shadow: var(--shadow-light-s); }
+.shadow-light-m { box-shadow: var(--shadow-light-m); }
+.shadow-light-l { box-shadow: var(--shadow-light-l); }
+.shadow-dark-s { box-shadow: var(--shadow-dark-s); }
+.shadow-dark-m { box-shadow: var(--shadow-dark-m); }
+.shadow-dark-l { box-shadow: var(--shadow-dark-l); }
 
 
 @media screen and (min-width: 750px)
