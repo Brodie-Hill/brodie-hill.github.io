@@ -120,7 +120,7 @@ function genCard(project)
     
     card.appendChild(banner);
     card.appendChild(body);
-
+    
     return card;
 }
 

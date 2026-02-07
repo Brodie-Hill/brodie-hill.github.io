@@ -60,13 +60,14 @@ header#main .hamburger
     margin-left: auto;
     padding: var(--space-interaction-inl) var(--space-interaction-blk);
     
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(6px);
-
+    background-color: var(--color-tint-dark);
+    transition-property: backdrop-filter, background-color;
+    transition-duration: var(--trans-fast);
+    border: transparent;
     &.active
     {
         background-color: transparent;
-        backdrop-filter: none;
+        border: 2px var(--color-tint) solid;
     }
 
     span { transition-duration: var(--trans-fast); }

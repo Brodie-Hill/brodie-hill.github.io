@@ -4,9 +4,9 @@
     --color-bg: #0b0f14;
     --color-text: #e8e8e8;
     
-    --color-tint: rgba(116, 136, 148, 0.45);
-    --color-tint-light: rgba(200, 215, 225, 0.35);
-    --color-tint-dark: rgba(0, 2, 5, 0.55);
+    --color-tint: rgba(137, 141, 143, 0.4);
+    --color-tint-light: rgba(207, 214, 214, 0.35);
+    --color-tint-dark: rgba(27, 27, 28, 0.45);
     /* design colors */
     --color-primary: rgb(96, 157, 255);
     --grad-primary: linear-gradient(135deg, #6a11cb, #1756c4);
@@ -141,6 +141,7 @@ html
     position: relative;
     padding: var(--space-badge-inl) var(--space-badge-blk);
     text-decoration: none;
+    
 }
 
 .chip

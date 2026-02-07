@@ -11,6 +11,16 @@
             "A simple console wizard to help generate consistent commit messages using XML templates.",
         "description": 
             "",
+        "links": [
+            {
+                "label": "Release 1.3",
+                "a": "https://github.com/brodie-hill"
+            },
+            {
+                "label": "Docs",
+                "a": "https://github.com/brodie-hill"
+            }
+        ],
         "thumbnail": "cmg.png",
         "featured": 2
     },
