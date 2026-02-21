@@ -1,0 +1,53 @@
+
+ul.timeline-vertical
+{
+    display: grid;
+    column-gap: var(--space-content);
+    grid-template-columns: min-content 1fr;
+    align-items: start;
+    list-style: none;
+}
+
+ul.timeline-vertical .marker
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    &::before
+    {
+        content: "";
+        width: 2px;
+        background-color: black;
+        opacity: 1.0;
+        height: calc((1lh - 5px) / 2.0);
+        display: block;
+    }
+    &::after
+    {
+        content: "";
+        width: 2px;
+        background-color: black;
+        opacity: 1.0;
+        flex: 1;
+        display: block;
+    }
+    
+    &:nth-child(1)::before
+    {
+        background-color: transparent;
+    }
+    &:nth-last-child(2)::after
+    {
+        background-color: transparent;
+    }
+}
+
+ul.timeline-vertical .bullet
+{
+    width: 10px;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50cqh;
+}

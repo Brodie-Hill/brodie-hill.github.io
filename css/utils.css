@@ -56,7 +56,7 @@ html
     scroll-behavior: smooth;
 }
 
-/* ============ UTILITY LAYOUT ============ */
+/* ======================== UTILITY LAYOUT ======================== */
 
 .content
 {
@@ -106,25 +106,14 @@ html
     align-items: stretch;
 }
 
-.grid-vertical
+.grid
 {
     display: grid;
     justify-content: stretch;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(1, 1fr);
     grid-auto-flow: row;
     grid-auto-rows: 100%;
-    overflow: visible scroll;
-    align-items: stretch;
-}
-
-.grid-horizontal
-{
-    display: grid;
-    justify-content: stretch;
-    grid-template-rows: repeat(2, auto);
-    grid-auto-flow: column;
-    grid-auto-columns: 100%;
-    overflow: auto visible;
+    overflow:visible;
     align-items: stretch;
 }
 
@@ -132,6 +121,9 @@ html
 {
     aspect-ratio: 1;
 }
+
+
+/* ======================== ELEMENTS ======================== */
 
 .badge, .chip, .btn
 {
@@ -174,15 +166,7 @@ html
     img#full { display: none; }
 }
 
-.text-area
-{
-    padding: var(--space-content);
-    border: 1px solid var(--color-tint);
-    background: var(--color-tint-dark);
-    border-radius: var(--space-content);
-}
-
-.line-brk
+.break-line
 {
     position:absolute;
     left: var(--space-content);
@@ -192,72 +176,27 @@ html
     background: var(--color-tint);
 }
 
-ul.timeline-vertical
+.break-page
 {
-    display: grid;
-    column-gap: var(--space-content);
-    grid-template-columns: min-content 1fr;
-    align-items: start;
-    list-style: none;
+    display: block;
+    height: 1.5rem;
+    background-image:
+        repeating-linear-gradient(45deg, black 0 1rem, transparent 1rem 2rem),
+        var(--grad-primary);
+    box-shadow: var(--shadow-dark-l);
+    z-index: 3;position:relative;
 }
 
-ul.timeline-vertical .marker
+.text-area
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    &::before
-    {
-        content: "";
-        width: 2px;
-        background-color: black;
-        opacity: 1.0;
-        height: calc((1lh - 5px) / 2.0);
-        display: block;
-    }
-    &::after
-    {
-        content: "";
-        width: 2px;
-        background-color: black;
-        opacity: 1.0;
-        flex: 1;
-        display: block;
-    }
-    
-    &:nth-child(1)::before
-    {
-        background-color: transparent;
-    }
-    &:nth-last-child(2)::after
-    {
-        background-color: transparent;
-    }
+    padding: var(--space-content);
+    border: 1px solid var(--color-tint);
+    background: var(--color-tint-dark);
+    border-radius: var(--space-content);
 }
 
-ul.timeline-vertical .bullet
-{
-    width: 10px;
-    aspect-ratio: 1;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 50cqh;
-}
 
-ul.progress-list
-{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-content);
-}
-
-ul.progress-list li
-{
-    display: flex;
-    gap: var(--space-content);
-}
+/* ============ PROGRESS BAR ============ */
 
 .progress-bar
 {
@@ -279,6 +218,55 @@ ul.progress-list li
     border-radius: 50cqh; /* must do this here as well as parent, because box shadow doesnt follow parent radius */
 }
 
+
+/* ============ CARDS ============ */
+
+.card
+{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index:4;
+    border-radius: calc(2 * var(--space-content));
+    overflow: hidden;
+    border: 1px solid var(--color-tint);
+    box-shadow: var(--shadow-light-s);
+}
+
+.card-banner
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    height: 8rem;
+
+    &::before
+    {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.553), rgba(0, 0, 0, 0.142))
+    }
+}
+
+.card-body
+{
+    flex: 1;
+}
+
+.card .text-area
+{
+    opacity: 0.7;
+    flex:1;
+    align-self: stretch;
+    justify-self: stretch;
+}
+
+.card .tag
+{
+    background-color: var(--color-tint-dark);
+}
 
 /* ============ UTILITY TEXT ============ */
 
@@ -342,6 +330,16 @@ ul.progress-list li
 .shadow-dark-m { box-shadow: var(--shadow-dark-m); }
 .shadow-dark-l { box-shadow: var(--shadow-dark-l); }
 
+.ignore-ptr
+{
+    pointer-events: none;
+}
+.ignore-ptr-self
+{
+    pointer-events: none;
+    &>:not(.ignore-ptr-self){pointer-events: all;}
+}
+
 
 @media screen and (min-width: 750px)
 {
@@ -352,14 +350,9 @@ ul.progress-list li
         width: 750px;
     }
 
-    .grid-vertical
+    .grid
     {
-        grid-auto-rows: 30%;
-    }
-
-    .grid-horizontal
-    {
-        grid-auto-columns: 30%;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -390,13 +383,9 @@ ul.progress-list li
         img#icon { display: none; }
         img#full { display: block; }
     }
-    .grid-vertical
-    {
-        grid-auto-rows: 25%;
-    }
 
-    .grid-horizontal
+    .grid
     {
-        grid-auto-columns: 25%;
+        grid-template-columns: repeat(3, 1fr);
     }
 }

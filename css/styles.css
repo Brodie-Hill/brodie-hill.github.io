@@ -23,22 +23,24 @@ body
 
 /* ============ HEADER ============ */
 
-header#main
+#header-main
 {
     --space-interaction-inl: 1.2rem;
     --space-interaction-blk: 1.2rem;
-
+    
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 999;
     height: auto;
-    transition:
-        background-color var(--trans-med),
-        backdrop-filter var(--trans-med),
-        filter var(--trans-med),
-        opacity var(--trans-med);
+
+    transition: var(--trans-med);
+    transition-property:
+        background-color,
+        backdrop-filter,
+        filter,
+        opacity;
 
     &.active
     {
@@ -47,33 +49,34 @@ header#main
     }
 }
 
-header#main>.content
+#header-main>.content
 {
     height: var(--header-height);
     display: flex;
     align-items: stretch;
 }
 
-header#main .hamburger
+#header-main .hamburger
 {
     margin: var(--space-content);
     margin-left: auto;
     padding: var(--space-interaction-inl) var(--space-interaction-blk);
     
     background-color: var(--color-tint-dark);
+    transition: var(--trans-med);
     transition-property: backdrop-filter, background-color;
-    transition-duration: var(--trans-fast);
     border: transparent;
+
     &.active
     {
         background-color: transparent;
         border: 2px var(--color-tint) solid;
     }
 
-    span { transition-duration: var(--trans-fast); }
+    span { transition: var(--trans-med); }
 }
 
-header#main nav
+#header-main nav
 {
     position: relative;
     width: 100%;
@@ -85,13 +88,13 @@ header#main nav
     text-align: right;
 }
 
-header#main nav .line-brk
+#header-main nav .break-line
 {
     background-color: transparent;
     transition: var(--trans-med);
 }
 
-header#main nav ul
+#header-main nav ul
 {
     height: 100%;
     display: flex;
@@ -99,7 +102,7 @@ header#main nav ul
     justify-content: flex-start;
 }
 
-header#main nav li
+#header-main nav li
 {
     position: relative;
     right: -100%;
@@ -112,7 +115,7 @@ header#main nav li
     &:nth-child(3) { transition-delay: 0s; }
 }
 
-header#main nav a
+#header-main nav a
 {    
     display:block;
     color: #ddd;
@@ -124,17 +127,17 @@ header#main nav a
     }
 }
 
-header#main nav.active
+#header-main nav.active
 {
     height: 100vh;
 }
 
-header#main nav.active .line-brk
+#header-main nav.active .break-line
 {
     background-color: var(--color-tint);
 }
 
-header#main nav.active li
+#header-main nav.active li
 {
     right: 0%;
     opacity: 1;
@@ -148,65 +151,7 @@ main
     flex: 1;
 }
 
-.card
-{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index:4;
-    border-radius: calc(2 * var(--space-content));
-    overflow: hidden;
-    border: 1px solid var(--color-tint);
-    box-shadow: var(--shadow-light-s);
-}
-
-.card-banner
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    height: 8rem;
-
-    &::before
-    {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.553), rgba(0, 0, 0, 0.142))
-    }
-}
-
-.card-body
-{
-    flex: 1;
-}
-
-.card .text-area
-{
-    opacity: 0.7;
-    flex:1;
-    align-self: stretch;
-    justify-self: stretch;
-}
-
-.card .tag
-{
-    background-color: var(--color-tint-dark);
-}
-
 /* ============ SECTIONS ============ */
-
-.pagebrk
-{
-    display: block;
-    height: 1.5rem;
-    background-image:
-        repeating-linear-gradient(45deg, black 0 1rem, transparent 1rem 2rem),
-        var(--grad-primary);
-    box-shadow: var(--shadow-dark-l);
-    z-index: 3;position:relative;
-}
 
 section
 {
@@ -264,6 +209,20 @@ section#about article img
     align-self: center;
 }
 
+section#about ul.progress-list
+{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-content);
+
+    &>li
+    {
+        display: flex;
+        gap: var(--space-content);
+    }
+}
+
 section#about .skill-name
 {
     font-weight: bold;
@@ -306,11 +265,13 @@ section#about select#skill-category
         display: flex;
         flex-direction: row;
         align-items: stretch;
-gap: 0;
+        gap: 0;
+
         div{
             flex: 1;
             position: relative;
         }
+        
         &:nth-child(even)
         {
             flex-direction: row;
@@ -345,7 +306,7 @@ gap: 0;
     }
 
     
-    header#main
+    #header-main
     {
         &:hover
         {
@@ -361,15 +322,15 @@ gap: 0;
         }
     }
     
-    header#main>#header-main-content
+    #header-main>#header-main-content
     { }
 
-    header#main .hamburger
+    #header-main .hamburger
     {
         display: none;
     }
 
-    header#main nav
+    #header-main nav
     {
         position: absolute;
         top: 0;
@@ -384,7 +345,7 @@ gap: 0;
         }
     }
 
-    header#main nav ul
+    #header-main nav ul
     {        
         transition: none;
         flex-direction: row;
@@ -392,7 +353,7 @@ gap: 0;
         align-items: stretch;
     }
     
-    header#main nav li
+    #header-main nav li
     {
         position: relative;
         display: flex;
@@ -424,7 +385,7 @@ gap: 0;
         }
     }
 
-    header#main nav li:hover
+    #header-main nav li:hover
     {
         background-size: 100% 80%;
 
@@ -434,7 +395,7 @@ gap: 0;
         }
     }
 
-    header#main nav a
+    #header-main nav a
     {
         display: flex;font-size:1.5rem;
         justify-content: center;

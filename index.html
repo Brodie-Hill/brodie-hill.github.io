@@ -15,20 +15,25 @@
         
         <!-- scripts -->
          <script src="scripts/classtoggle.js"></script>
-         <script src="scripts/headerhider.js" defer></script>
          <script src="scripts/projectloader.js" defer></script>
          <script src="scripts/skillloader.js" defer></script>
-
-         <script defer>
-            window.addEventListener("resize", () => { removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav'); });
-        </script>
-
     </head>
     <body>
-        <header id="main">
-            <div class="content">
+        <header id="header-main" class="ignore-ptr-self">
+            <script>
+                let lastScr = 0;
+                const header = document.getElementById("header-main");
+                window.addEventListener("scroll", () =>
+                {
+                    if (window.pageYOffset > lastScr) header.classList.add("collapse")
+                    else header.classList.remove("collapse")
+
+                    lastScr = window.pageYOffset
+                })
+            </script>
+            <div class="content ignore-ptr-self">
                 <!-- <h1 style="align-self:center;">Title</h1> -->
-                <button id="main-nav-mobile" class="hamburger" aria-label="Toggle navigation menu" onclick="toggleClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">
+                <button id="main-nav-mobile" class="hamburger" aria-label="Toggle navigation menu" onclick="toggleClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav')">
                     <!-- the bars of hamburger are styled from empty spans. using the unicode
                      char isnt as good as different browsers may render it differently. -->
                     <span></span>
@@ -36,8 +41,12 @@
                     <span></span>
                 </button>
             </div>
+
             <nav>
-                <span class="line-brk"></span>
+                <script>
+                    window.addEventListener("resize", () => { removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav'); });
+                </script>
+                <span class="break-line"></span>
                 <ul class="content" role="menu">
                     <li role="menuitem"><a class="large btn" href="#about" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">About</a></li>
                     <li role="menuitem"><a class="large btn" href="#projects" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Public Projects</a></li>
@@ -63,24 +72,24 @@
                     </div>
                 </div>
             </section>
-            <span class="pagebrk"></span>
+            <span class="break-page"></span>
             <section id="about" class="sector-padding-blk">
                 <article class="content content-gap">
                     <img class="grad-light" src="data/anon.png" />
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Background</h3>
-                        <span class="line-brk"></span>
+                        <span class="break-line"></span>
                         <p class="content-padding-blk sector-padding-inl ">
                             
                         </p>
-                        <span class="line-brk"></span>
+                        <span class="break-line"></span>
                     </div>
                 </article>
                 <article class="content content-gap sector-margin-blk">
                     <img class="grad-light" src="data/anon.png" />
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Skills</h3>
-                        <span class="line-brk"></span>
+                        <span class="break-line"></span>
                         <div class="sector-padding-inl ">
                             <select id="skill-category" class="content-margin-blk btn centered" style="margin-inline:auto;"" onchange="changeGroup(this.value)">
                                 <!-- populated by js -->
@@ -89,14 +98,14 @@
                                 <!-- populated by js -->
                             </div>
                         </div>
-                        <span class="line-brk"></span>
+                        <span class="break-line"></span>
                     </div>
                 </article>
                 <article class="content content-gap sector-margin-blk">
                     <img class="grad-light" src="data/anon.png" />
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Education & Experience</h3>
-                        <span class="line-brk"></span>
+                        <span class="break-line"></span>
                         <ul class="timeline-vertical sector-margin-inl content-margin-blk">
                             <li class="marker">
                                 <h4 class="bullet"></h4>
@@ -115,11 +124,11 @@
                                 <p class="content-padding-inl">Bachelor of Software Engineering (Hons).</p>
                             </li>
                         </ul>
-                        <span class="line-brk"></span>
+                        <span class="break-line"></span>
                     </div>
                 </article>
             </section>
-            <span class="pagebrk"></span>
+            <span class="break-page"></span>
             <section id="projects">
                 <h1 class="centered sector-padding-blk sector-padding-inl nopad-bot">Projects</h1>
                 <!-- Populated by js -->

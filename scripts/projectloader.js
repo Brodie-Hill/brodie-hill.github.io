@@ -37,7 +37,7 @@ function genMediaHtml(filePath, additionalAttribs, image = true, audio = true, v
 function linebrk()
 {
     const linebrk = document.createElement("span");
-    linebrk.classList.add("line-brk");
+    linebrk.classList.add("break-line");
     return linebrk;
 }
 
@@ -124,7 +124,7 @@ function genCard(project)
     return card;
 }
 
-function genRow(groupName, groupProjects)
+function genGroup(groupName, groupProjects)
 {
     const parent = document.createElement("div");
     parent.classList.add("project-group", "sector-margin-blk");
@@ -132,19 +132,19 @@ function genRow(groupName, groupProjects)
     header.classList.add("content-padding-blk", "sector-padding-inl")
     header.textContent = groupName;
     
-    let row = document.createElement("div");
-    row.classList.add("grid-horizontal", "content-padding-blk", "sector-padding-inl", "content-gap", "nopad-bot");
+    let cards = document.createElement("div");
+    cards.classList.add("grid", "content-gap", "content-padding-blk", "sector-padding-inl", "content-gap", "nopad-bot");
 
     for (const project of groupProjects)
     {
         let card = genCard(project);
-        row.appendChild(card);
+        cards.appendChild(card);
     }
 
     parent.appendChild(linebrk());
     parent.appendChild(header);
     parent.appendChild(linebrk());
-    parent.inner = parent.appendChild(row);
+    parent.inner = parent.appendChild(cards);
     return parent;
 }
 
@@ -184,7 +184,7 @@ async function parseProjects()
 
     for (const [group, projects] of projectGroups)
     {
-        let rowGroup = genRow(group, projects);
+        let rowGroup = genGroup(group, projects);
 
         container.appendChild(rowGroup);
     }

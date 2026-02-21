@@ -32,24 +32,24 @@ function genSkills(group, skills)
     let list = document.createElement("ul");
     list.classList.add("progress-list");
 
-    const observer = new IntersectionObserver(
-        (entries, observer) =>
+    const callback = (entries, observer) =>
+    {
+        for (const entry of entries)
         {
-            for (const entry of entries)
-            {
-                if (!entry.isIntersecting) continue;
-                
-                const fills = entry.target.querySelectorAll(".progress-bar-fill");
-                fills.forEach(fill => { fill.style.width = fill.dataset.targetWidth; });
-                
-                observer.unobserve(entry.target);
-            }
-        },
-        {
-            root: null,
-            threshold: 0.0
+            if (!entry.isIntersecting) continue;
+            
+            const fills = entry.target.querySelectorAll(".progress-bar-fill");
+            fills.forEach(fill => { fill.style.width = fill.dataset.targetFill; });
+            
+            observer.unobserve(entry.target);
         }
-    );
+    };
+    const options = {
+        root: null,
+        threshold: 0.1
+    }
+
+    const observer = new IntersectionObserver(callback);
     observer.observe(list);
 
 
@@ -66,12 +66,13 @@ function genSkills(group, skills)
 
         const bar = document.createElement("span");
         bar.classList.add("progress-bar");
+        
         const fill = document.createElement("span");
         fill.classList.add("progress-bar-fill");
         fill.style.backgroundImage = `var(--grad-${profGrade.color})`;
         fill.style.boxShadow = `inset 0 0 8px var(--color-${profGrade.color}), ${shadow}`;
         fill.style.width = "0"; // start at 0 fill and animate up when it become visible
-        fill.dataset.targetWidth = `${skill.proficiency}%`;
+        fill.dataset.targetFill = `${skill.proficiency}%`;
 
         bar.appendChild(fill);
         li.appendChild(bar);
