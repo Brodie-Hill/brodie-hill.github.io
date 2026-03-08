@@ -1,0 +1,29 @@
+.expandable-group
+{
+
+}
+
+.expandable
+{
+    --collapsed-height: 0rem;
+    --fade-size: 3rem;
+    
+    ;
+    interpolate-size: allow-keywords;
+    transition-property:
+        max-height,
+        padding-bottom;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    max-height: var(--collapsed-height);
+    overflow: hidden;
+}
+
+.expandable.collapse
+{
+    mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent 100%);
+}
+.expandable.expand
+{
+    max-height: fit-content;
+}

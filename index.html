@@ -10,11 +10,14 @@
         <!-- link stylesheets -->
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/utils.css" />
+        <link rel="stylesheet" href="css/timeline-ul.css" />
+        <link rel="stylesheet" href="css/expandables.css" />
         <link rel="stylesheet" href="css/hamburger.css" />
         <link rel="stylesheet" href="css/styles.css" />
         
         <!-- scripts -->
          <script src="scripts/classtoggle.js"></script>
+         <script src="scripts/expandables.js" defer></script>
          <script src="scripts/projectloader.js" defer></script>
          <script src="scripts/skillloader.js" defer></script>
     </head>
@@ -73,14 +76,18 @@
                 </div>
             </section>
             <span class="break-page"></span>
-            <section id="about" class="sector-padding-blk">
+            <section id="about" class="expandable-group sector-padding-blk">
                 <article class="content content-gap">
                     <img class="grad-light" src="data/anon.png" />
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Background</h3>
                         <span class="break-line"></span>
-                        <p class="content-padding-blk sector-padding-inl ">
-                            
+                        <p class="expandable content-padding-blk sector-padding-inl ">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet lectus ac nibh suscipit vehicula. Morbi sit amet nisl a lacus finibus pharetra in lobortis ante. Vivamus laoreet finibus ante. Ut accumsan sapien ante, eget eleifend velit interdum vitae. Donec nec pretium risus. Suspendisse faucibus, purus sed porttitor laoreet, libero dolor tincidunt tellus, nec volutpat nisl mauris id lacus. Aliquam mattis sodales felis, non condimentum ex sagittis vitae. In nec elit in tortor imperdiet placerat. Mauris suscipit ac nibh sed mattis. Aenean vitae ornare nunc, sed efficitur ante. In placerat massa et tortor mattis tristique. Fusce lacinia, lorem eu aliquet commodo, nisi neque mattis nibh, ac consectetur lorem dui gravida purus.
+
+Aliquam vulputate hendrerit augue in iaculis. Maecenas molestie augue quis sollicitudin aliquet. Ut commodo erat nec lobortis dignissim. Nunc in ligula aliquet, tincidunt arcu nec, blandit mi. Quisque eget arcu in metus rutrum pulvinar. Etiam quis risus gravida, vehicula tortor consectetur, mattis massa. Maecenas porta magna sit amet velit bibendum, ac egestas arcu cursus. Fusce aliquet ultrices turpis facilisis aliquet. Ut ante felis, aliquam placerat blandit ac, feugiat in urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc tristique aliquam erat, et rhoncus velit interdum id. Donec pulvinar placerat arcu ac auctor. Nam feugiat arcu non nunc convallis, eget hendrerit ipsum eleifend.
+
+Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus eu feugiat pulvinar. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sodales porttitor mattis. Nam pharetra enim sed enim imperdiet porttitor. Curabitur vitae ullamcorper justo. Donec justo nunc, dapibus eget ante eu, eleifend varius dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam hendrerit vestibulum nibh vitae faucibus. Maecenas eu pulvinar ligula. Vestibulum tempus nulla eget urna bibendum tincidunt. Donec ut porttitor ante, a molestie ipsum.
                         </p>
                         <span class="break-line"></span>
                     </div>
@@ -90,7 +97,7 @@
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Skills</h3>
                         <span class="break-line"></span>
-                        <div class="sector-padding-inl ">
+                        <div class="expandable sector-padding-inl ">
                             <select id="skill-category" class="content-margin-blk btn centered" style="margin-inline:auto;"" onchange="changeGroup(this.value)">
                                 <!-- populated by js -->
                             </select>
@@ -106,7 +113,8 @@
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Education & Experience</h3>
                         <span class="break-line"></span>
-                        <ul class="timeline-vertical sector-margin-inl content-margin-blk">
+                        <div class="expandable">
+                            <ul class="timeline-vertical sector-margin-inl content-margin-blk">
                             <li class="marker">
                                 <h4 class="bullet"></h4>
                             </li>
@@ -124,6 +132,7 @@
                                 <p class="content-padding-inl">Bachelor of Software Engineering (Hons).</p>
                             </li>
                         </ul>
+                        </div>
                         <span class="break-line"></span>
                     </div>
                 </article>

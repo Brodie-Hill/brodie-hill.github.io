@@ -256,6 +256,19 @@ section#about select#skill-category
     padding-right: 30px;
 }
 
+section#about .expandable
+{
+    --collapsed-height: 30vh;
+    --fade-size: 5rem;
+}
+section#about .expand-trigger
+{
+    display: block;
+    justify-self: center;
+    border: none;
+    margin: var(--space-content);
+}
+
 @media screen and (min-width: 750px)
 {
     /* ============ TABLET ============ */
