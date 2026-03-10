@@ -258,10 +258,21 @@ section#about select#skill-category
 
 section#about .expandable
 {
-    --collapsed-height: 30vh;
+    --collapsed-height: 24rem;
     --fade-size: 5rem;
 }
-section#about .expand-trigger
+
+section#projects .expandable
+{
+    --collapsed-height: 32rem;
+    --fade-size: 5rem;
+}
+section#projects .expand-trigger
+{
+    background: var(--grad-primary);
+    color: var(--color-light);
+}
+.expand-trigger
 {
     display: block;
     justify-self: center;

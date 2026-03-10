@@ -16,10 +16,11 @@
         <link rel="stylesheet" href="css/styles.css" />
         
         <!-- scripts -->
-         <script src="scripts/classtoggle.js"></script>
-         <script src="scripts/expandables.js" defer></script>
-         <script src="scripts/projectloader.js" defer></script>
-         <script src="scripts/skillloader.js" defer></script>
+        <script src="scripts/classtoggle.js"></script>
+        <script src="scripts/expandables.js" defer></script>
+        <script src="scripts/projectloader.js" defer></script>
+        <script src="scripts/skillloader.js" defer></script>
+
     </head>
     <body>
         <header id="header-main" class="ignore-ptr-self">
@@ -51,9 +52,15 @@
                 </script>
                 <span class="break-line"></span>
                 <ul class="content" role="menu">
-                    <li role="menuitem"><a class="large btn" href="#about" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">About</a></li>
-                    <li role="menuitem"><a class="large btn" href="#projects" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Public Projects</a></li>
-                    <li role="menuitem"><a class="large btn" href="#contact" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Contact</a></li>
+                    <li role="menuitem">
+                        <a class="large btn" href="#about" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">About</a>
+                    </li>
+                    <li role="menuitem">
+                        <a class="large btn" href="#projects" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Projects</a>
+                    </li>
+                    <li role="menuitem">
+                        <a class="large btn" href="#contact" onclick="removeClass('active', '.hamburger#main-nav-mobile', 'header#main', 'nav')">Contact</a>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -82,7 +89,7 @@
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Background</h3>
                         <span class="break-line"></span>
-                        <p class="expandable content-padding-blk sector-padding-inl ">
+                        <p class="expandable content-margin-blk sector-padding-inl ">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam laoreet lectus ac nibh suscipit vehicula. Morbi sit amet nisl a lacus finibus pharetra in lobortis ante. Vivamus laoreet finibus ante. Ut accumsan sapien ante, eget eleifend velit interdum vitae. Donec nec pretium risus. Suspendisse faucibus, purus sed porttitor laoreet, libero dolor tincidunt tellus, nec volutpat nisl mauris id lacus. Aliquam mattis sodales felis, non condimentum ex sagittis vitae. In nec elit in tortor imperdiet placerat. Mauris suscipit ac nibh sed mattis. Aenean vitae ornare nunc, sed efficitur ante. In placerat massa et tortor mattis tristique. Fusce lacinia, lorem eu aliquet commodo, nisi neque mattis nibh, ac consectetur lorem dui gravida purus.
 
 Aliquam vulputate hendrerit augue in iaculis. Maecenas molestie augue quis sollicitudin aliquet. Ut commodo erat nec lobortis dignissim. Nunc in ligula aliquet, tincidunt arcu nec, blandit mi. Quisque eget arcu in metus rutrum pulvinar. Etiam quis risus gravida, vehicula tortor consectetur, mattis massa. Maecenas porta magna sit amet velit bibendum, ac egestas arcu cursus. Fusce aliquet ultrices turpis facilisis aliquet. Ut ante felis, aliquam placerat blandit ac, feugiat in urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc tristique aliquam erat, et rhoncus velit interdum id. Donec pulvinar placerat arcu ac auctor. Nam feugiat arcu non nunc convallis, eget hendrerit ipsum eleifend.
@@ -97,7 +104,7 @@ Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus 
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Skills</h3>
                         <span class="break-line"></span>
-                        <div class="expandable sector-padding-inl ">
+                        <div class="expandable content-margin-blk sector-padding-inl">
                             <select id="skill-category" class="content-margin-blk btn centered" style="margin-inline:auto;"" onchange="changeGroup(this.value)">
                                 <!-- populated by js -->
                             </select>
@@ -113,8 +120,8 @@ Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus 
                     <div>
                         <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Education & Experience</h3>
                         <span class="break-line"></span>
-                        <div class="expandable">
-                            <ul class="timeline-vertical sector-margin-inl content-margin-blk">
+                        <div class="expandable content-margin-blk sector-padding-inl">
+                            <ul class="timeline-vertical">
                             <li class="marker">
                                 <h4 class="bullet"></h4>
                             </li>
@@ -141,7 +148,9 @@ Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus 
             <section id="projects">
                 <h1 class="centered sector-padding-blk sector-padding-inl nopad-bot">Projects</h1>
                 <!-- Populated by js -->
-                
+                <div id="projects-container" class="expandable-group">
+
+                </div>
             </section>
         </main>
         <footer>

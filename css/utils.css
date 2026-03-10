@@ -72,6 +72,8 @@ html
 .content-margin { margin: var(--space-content); }
 .content-margin-blk { margin-block: var(--space-content); }
 .content-margin-inl { margin-inline: var(--space-content); }
+.content-margin-blk-start { margin-block-start: var(--space-content); }
+.content-margin-blk-end { margin-block-end: var(--space-content); }
 
 .sector-padding { padding: var(--space-sector-inl) var(--space-sector-blk); }
 .sector-padding-blk { padding-block: var(--space-sector-blk); }
@@ -79,6 +81,8 @@ html
 .sector-margin { margin: var(--space-sector-inl) var(--space-sector-blk); }
 .sector-margin-blk { margin-block: var(--space-sector-blk); }
 .sector-margin-inl { margin-inline: var(--space-sector-inl); }
+.sector-margin-blk-start { margin-block-start: var(--space-sector-blk); }
+.sector-margin-blk-end { margin-block-end: var(--space-sector-blk); }
 
 .nopad-top { padding-top: 0; }
 .nopad-bot { padding-bottom: 0; }
@@ -112,7 +116,6 @@ html
     justify-content: stretch;
     grid-template-columns: repeat(1, 1fr);
     grid-auto-flow: row;
-    grid-auto-rows: 100%;
     overflow:visible;
     align-items: stretch;
 }

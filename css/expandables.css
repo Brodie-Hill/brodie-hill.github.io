@@ -16,14 +16,15 @@
     transition-duration: 0.3s;
     transition-timing-function: ease;
     max-height: var(--collapsed-height);
-    overflow: hidden;
+
 }
 
 .expandable.collapse
-{
+{   
+    overflow: hidden;
     mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent 100%);
 }
 .expandable.expand
-{
+{    overflow: hidden;
     max-height: fit-content;
 }

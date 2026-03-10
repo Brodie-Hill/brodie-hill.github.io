@@ -127,7 +127,7 @@ function genCard(project)
 function genGroup(groupName, groupProjects)
 {
     const parent = document.createElement("div");
-    parent.classList.add("project-group", "sector-margin-blk");
+    parent.classList.add("project-group", "expandable", "sector-margin-blk-start", "content-margin-blk-end");
     const header = document.createElement("h2");
     header.classList.add("content-padding-blk", "sector-padding-inl")
     header.textContent = groupName;
@@ -152,7 +152,7 @@ async function parseProjects()
 {
     const result = await fetch(projectJsonPath);
     const projects = await result.json();
-    const container = document.getElementById("projects");
+    const container = document.getElementById("projects-container");
     
     if (!container)
     {
