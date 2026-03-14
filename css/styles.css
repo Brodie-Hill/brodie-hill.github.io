@@ -149,6 +149,7 @@ body
 main
 {
     flex: 1;
+    overflow: hidden;
 }
 
 /* ============ SECTIONS ============ */
@@ -237,7 +238,7 @@ section#about .skill-alias
 {
     align-self:center;
     font-weight: bold;
-    color:white;
+    color: white;
     text-shadow: 1px 2px 2px black;
     opacity: 0.7;
 }
@@ -264,7 +265,7 @@ section#about .expandable
 
 section#projects .expandable
 {
-    --collapsed-height: 32rem;
+    --collapsed-height: 64rem;
     --fade-size: 5rem;
 }
 section#projects .expand-trigger

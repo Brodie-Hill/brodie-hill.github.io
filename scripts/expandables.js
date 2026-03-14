@@ -1,85 +1,127 @@
 let toGroupMap = new Map();
 const fromGroupMap = new Map();
+let auxMap = new Map();
 
-
-const actions = {
-    expand(el) {
-        if (el && el.classList.contains("collapse"))
-        {
-            el.classList.add("expand");
-            el.classList.remove("collapse");
-        }
-    },
-    collapse(el) {
-        if (el && el.classList.contains("expand"))
-        {
-            el.classList.add("collapse");
-            el.classList.remove("expand");
-        }
-    },
-    toggle(el)
+export function expand(el)
+{
+    if (el && el.dataset.state == "collapse")
     {
-        if (el)
-        {
-            const active = el.classList.toggle("expand");
-            el.classList.toggle("collapse", !active);
-            return active;
-        }
-        return false;
-    },
-    toggleInGroup(el) {
-        const group = toGroupMap.get(el);
-        if (!group) return this.toggle(el);
-        if (this.toggle(el))
-        {
-            for (let other of fromGroupMap.get(group))
-            {
-                if (other !== el) this.collapse(other);
-            }
-            return true;
-        }
-        return false;
+        el.classList.add("expand");
+        el.classList.remove("collapse");
+        el.dataset.state = "expand";
     }
 }
+
+export function collapse(el)
+{
+    if (el && el.dataset.state == "expand") {
+        el.classList.add("collapse");
+        el.classList.remove("expand");
+        el.dataset.state = "collapse";
+    }
+};
+
+export function toggle(el)
+{
+    if (el)
+    {
+        const expanded = el.classList.toggle("expand");
+        el.classList.toggle("collapse", !expanded);
+        el.dataset.state = expanded ? "expand" : "collapse";
+        return expanded;
+    }
+    return false;
+};
+
+function toggleInGroup(el)
+{
+    const group = toGroupMap.get(el);
+    if (!group) return toggle(el);
+    if (toggle(el)) {
+        for (let other of fromGroupMap.get(group)) {
+            if (other !== el) collapse(other);
+        }
+        return true;
+    }
+    return false;
+};
+
+function managed(el, stateCheck)
+{
+    if (stateCheck == null)
+        return !!el.dataset.state;
+    return (el.dataset.state == stateCheck);
+};
+
+function manage(el)
+{
+    const aux = auxMap.get(el);
+    if (!aux) return;
+
+    if (!aux.btn)
+    {
+        aux.btn = document.createElement("button");
+        aux.btn.textContent = "Show More";
+        aux.btn.className = "expand-trigger heavy small chip btn";
+        aux.btn.onclick = () =>
+        {
+            const nowActive = toggleInGroup(el);
+            aux.btn.textContent = nowActive ? "Show Less" : "Show More";
+        };
+        el.after(aux.btn);
+    }
+    
+    if (!aux.btn.isConnected)
+    {
+        // reattach button if it was removed during reload
+        el.after(aux.btn);
+    }
+
+    if (!el.dataset.state)
+    {
+        el.classList.add("collapse");
+        el.dataset.state = "collapse";
+    }
+};
+
+function unmanage(el)
+{
+    let aux = auxMap.get(el);
+    aux.btn?.remove();
+    aux.btn = null;
+    el.classList.remove("expand");
+    el.classList.remove("collapse");
+    delete el.dataset.state;
+};
 
 
 const resizeObserver = new ResizeObserver((entries) =>
 {
     for (const entry of entries)
-        {
+    {
         const target = entry.target;
-        const isOversize = target.scrollHeight > target.clientHeight;
-        const expanded = target.classList.contains("expand");
+        const isOversize = target.scrollHeight > auxMap.get(target).ghost.clientHeight;
         
-        let btn = target.nextElementSibling;
-        const managed = btn?.classList.contains("expand-trigger");
+        const isManaged = managed(target);
 
-        if (isOversize && !managed)
+        if (isOversize)
         {
-            let newBtn = document.createElement("button");
-            newBtn.textContent = "Show More";
-            newBtn.className = "expand-trigger heavy small chip btn";
-            newBtn.onclick = () =>
-            {
-                const nowActive = actions.toggleInGroup(target);
-                newBtn.textContent = nowActive ? "Show Less" : "Show More";
-            };
-            target.after(newBtn);
-
-            target.classList.add("collapse");
+            if (!isManaged) manage(target);
         }
-        else if (!isOversize && managed && !expanded)
+        else
         {
-            btn.remove();
-            target.classList.remove("collapse");
+            if (isManaged) unmanage(target);
         }
     }
 });
 
-function initExpandable(el)
+
+export function makeExpandable(el)
 {
     if (el.dataset.tracked) return;
     el.dataset.tracked = "true";
+
+    el.classList.add("expandable");
 
     const group = el.closest(".expandable-group") || null;
     toGroupMap.set(el, group);
@@ -90,37 +132,20 @@ function initExpandable(el)
         fromGroupMap.get(group).add(el);
     }
 
+    const collapseGhost = document.createElement("span");
+    collapseGhost.className = el.className;
+    collapseGhost.classList.add("collapse-ghost");
+
+    el.before(collapseGhost);
+    
+    auxMap.set(el, {ghost: collapseGhost, btn: null});
+
     resizeObserver.observe(el);
 }
 
-const globalObserver = new MutationObserver((mutations) =>
-{
-    mutations.forEach(mutation =>
-    {
-        mutation.addedNodes.forEach(node =>
-        {
-            if (node.nodeType === 1) { // element
-                if (node.classList.contains('expandable')) {
-                    initExpandable(node);
-                }
-                node.querySelectorAll('.expandable').forEach(initExpandable);
-            }
-        });
-    });
-});
-globalObserver.observe(document.body, {childList: true, subtree: true});
-
-window.addEventListener("resize", ()=>
-{
-    toGroupMap.forEach((v, k) =>
-    {
-        actions.collapse(k);
-    });
-})
-// for initial elements
 const targets = document.querySelectorAll(".expandable");
 
 targets.forEach((el) =>
 {
-    initExpandable(el);
+    makeExpandable(el);
 });

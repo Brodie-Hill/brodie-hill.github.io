@@ -1,3 +1,6 @@
+import {makeExpandable} from "./expandables.js";
+    
+
 const projectJsonPath = "data/projects.json";
 const mediaPath = "data/media/";
 const tagIconPath = "data/tagicons/";
@@ -127,7 +130,8 @@ function genCard(project)
 function genGroup(groupName, groupProjects)
 {
     const parent = document.createElement("div");
-    parent.classList.add("project-group", "expandable", "sector-margin-blk-start", "content-margin-blk-end");
+    parent.classList.add("project-group", "sector-margin-blk-start", "content-margin-blk-end");
+
     const header = document.createElement("h2");
     header.classList.add("content-padding-blk", "sector-padding-inl")
     header.textContent = groupName;
@@ -144,7 +148,8 @@ function genGroup(groupName, groupProjects)
     parent.appendChild(linebrk());
     parent.appendChild(header);
     parent.appendChild(linebrk());
-    parent.inner = parent.appendChild(cards);
+    parent.appendChild(cards);
+    
     return parent;
 }
 
@@ -187,6 +192,7 @@ async function parseProjects()
         let rowGroup = genGroup(group, projects);
 
         container.appendChild(rowGroup);
+        makeExpandable(rowGroup);
     }
 }
 

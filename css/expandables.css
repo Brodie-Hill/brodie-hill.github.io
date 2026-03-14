@@ -8,23 +8,39 @@
     --collapsed-height: 0rem;
     --fade-size: 3rem;
     
-    ;
     interpolate-size: allow-keywords;
-    transition-property:
-        max-height,
-        padding-bottom;
+    transition-property: none;
     transition-duration: 0.3s;
     transition-timing-function: ease;
     max-height: var(--collapsed-height);
-
+    position: relative;
 }
 
 .expandable.collapse
-{   
+{
+    transition-property:
+        max-height,
+        padding-bottom;
     overflow: hidden;
     mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent 100%);
 }
 .expandable.expand
-{    overflow: hidden;
+{
+    transition-property:
+        max-height,
+        padding-bottom;
+    overflow: hidden;
     max-height: fit-content;
+}
+
+.expandable.collapse-ghost
+{
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    height: var(--collapsed-height);
+    visibility: hidden;
+    pointer-events: none;
 }
