@@ -3,7 +3,9 @@
     /* document colors */
     --color-bg: #0b0f14;
     --color-text: #e8e8e8;
-    
+    --color-link: #e8e8e8;
+    --color-link-emph: white;
+
     --color-tint: rgba(137, 141, 143, 0.4);
     --color-tint-light: rgba(207, 214, 214, 0.35);
     --color-tint-dark: rgba(27, 27, 28, 0.45);
@@ -56,6 +58,15 @@ html
     scroll-behavior: smooth;
 }
 
+a
+{
+    color: var(--color-link);
+    &:hover
+    {
+        color: var(--color-link-emph);
+    }
+}
+
 /* ======================== UTILITY LAYOUT ======================== */
 
 .content
@@ -75,14 +86,21 @@ html
 .content-margin-blk-start { margin-block-start: var(--space-content); }
 .content-margin-blk-end { margin-block-end: var(--space-content); }
 
-.sector-padding { padding: var(--space-sector-inl) var(--space-sector-blk); }
+.sector-padding { padding: var(--space-sector-blk) var(--space-sector-inl); }
 .sector-padding-blk { padding-block: var(--space-sector-blk); }
 .sector-padding-inl { padding-inline: var(--space-sector-inl); }
-.sector-margin { margin: var(--space-sector-inl) var(--space-sector-blk); }
+.sector-margin { margin: var(--space-sector-blk) var(--space-sector-inl); }
 .sector-margin-blk { margin-block: var(--space-sector-blk); }
 .sector-margin-inl { margin-inline: var(--space-sector-inl); }
 .sector-margin-blk-start { margin-block-start: var(--space-sector-blk); }
 .sector-margin-blk-end { margin-block-end: var(--space-sector-blk); }
+
+.interact-padding { padding: var(--space-interaction-blk) var(--space-interaction-inl); }
+.interact-padding-blk { padding-block: var(--space-interaction-blk); }
+.interact-padding-inl { padding-inline: var(--space-interaction-inl); }
+.interact-margin { margin: var(--space-interaction-blk) var(--space-interaction-inl); }
+.interact-margin-blk { margin-block: var(--space-interaction-blk); }
+.interact-margin-inl { margin-inline: var(--space-interaction-inl); }
 
 .nopad-top { padding-top: 0; }
 .nopad-bot { padding-bottom: 0; }
@@ -110,6 +128,13 @@ html
     align-items: stretch;
 }
 
+.flex-dynamic-1, .flex-dynamic-2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
 .grid
 {
     display: grid;
@@ -136,7 +161,8 @@ html
     position: relative;
     padding: var(--space-badge-inl) var(--space-badge-blk);
     text-decoration: none;
-    
+
+    * { text-decoration: none; }
 }
 
 .chip
@@ -266,7 +292,7 @@ html
     justify-self: stretch;
 }
 
-.card .tag
+.tag
 {
     background-color: var(--color-tint-dark);
 }
@@ -290,6 +316,11 @@ html
 .grad-light { background-image: var(--grad-light); }
 .grad-dark { background-image: var(--grad-dark); }
 
+.bg-primary { background-color: var(--color-primary); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-light { background-color: var(--color-light); }
+.bg-dark { background-color: var(--color-dark); }
+
 .light
 {
     opacity: 0.75;
@@ -304,7 +335,7 @@ html
 
 .left { text-align: left; }
 
-.centered { text-align: center; align-self: center;}
+.centered { text-align: center; align-self: center; justify-content:center;}
 
 .right { text-align: right; }
 
@@ -350,12 +381,17 @@ html
 
     .content
     {
-        width: 750px;
+        max-width: 750px;
     }
 
     .grid
     {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .flex-dynamic-1
+    {
+        flex-direction: row;
     }
 }
 
@@ -365,7 +401,7 @@ html
 
     .content
     {
-        width: 1200px;
+        max-width: 1200px;
     }
 
     .btn
@@ -373,7 +409,7 @@ html
         /* class to do the hover effects for interactions like buttons */
 
         transform: scale(1);
-        transition: transform var(--trans-fast);
+        transition: scale var(--trans-fast);
 
         &:hover
         {
@@ -390,5 +426,10 @@ html
     .grid
     {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .flex-dynamic-2
+    {
+        flex-direction: row;
     }
 }

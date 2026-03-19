@@ -3,7 +3,8 @@
         "group": "Personal",
         "name": "Commit Msg Generator",
         "date": "June 2025",
-        "tags": [
+        "tags":
+        [
             "c++",
             "xml"
         ],
@@ -11,17 +12,40 @@
             "A simple console wizard to help generate consistent commit messages using XML templates.",
         "description": 
             "",
-        "links": [
+        "media":
+        [
+
+        ],
+        "links":
+        [
             {
-                "label": "Release 1.3",
+                "label": "Test Link A",
+                "a": "https://github.com/brodie-hill",
+                "feature": 1
+            },
+            {
+                "label": "Test Link B",
+                "a": "https://github.com/brodie-hill",
+                "feature": 1
+            },
+            {
+                "label": "Test Link C",
                 "a": "https://github.com/brodie-hill"
             },
             {
-                "label": "Docs",
+                "label": "Test Link D",
+                "a": "https://github.com/brodie-hill"
+            },
+            {
+                "label": "Test Link E",
+                "a": "https://github.com/brodie-hill"
+            },
+            {
+                "label": "Test Link F",
                 "a": "https://github.com/brodie-hill"
             }
         ],
-        "thumbnail": "cmg.png",
+        "thumbnail": "project-cmg-0.png",
         "featured": 2
     },
     {
@@ -35,14 +59,30 @@
         ],
         "blurb":
             "A static site made to centralize links to my best projects and work. Hosted on github pages.",
-        "thumbnail": "portfolio-site.png",
+        "description":
+            "",
+        "media":
+        [
+
+        ],
+        "thumbnail": "project-portfoliosite-0.png",
         "links": [
             {
-                "label": "Release 1.3",
+                "label": "Test Link A",
+                "a": "https://github.com/brodie-hill",
+                "feature": 1
+            },
+            {
+                "label": "Test Link B",
+                "a": "https://github.com/brodie-hill",
+                "feature": 1
+            },
+            {
+                "label": "Test Link C",
                 "a": "https://github.com/brodie-hill"
             },
             {
-                "label": "Docs",
+                "label": "Test Link D",
                 "a": "https://github.com/brodie-hill"
             }
         ],
@@ -65,18 +105,24 @@
             "Final year-long project from my time at Media Design School.",
         "description": 
             "",
-        "thumbnail": "cot-trailer.mp4",
+        "thumbnail": "project-cot-0.mp4",
         "media": [
-            "testimg1.png",
-            "cot-trailer.mp4"
+            "project-cot-0.mp4",
+            "project-cot-1.png",
+            "project-cot-2.png",
+            "project-cot-3.png",
+            "project-cot-4.png",
+            "project-cot-5.png",
+            "project-cot-6.png",
+            "Capture.PNG"
         ],
         "links": [
             {
-                "label": "Release 1.3",
+                "label": "Test Link A",
                 "a": "https://github.com/brodie-hill"
             },
             {
-                "label": "Docs",
+                "label": "Test Link B",
                 "a": "https://github.com/brodie-hill"
             }
         ],

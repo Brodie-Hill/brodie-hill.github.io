@@ -1,0 +1,101 @@
+.carousel
+{
+    --carousel-spacing: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--carousel-spacing);
+}
+.carousel-content
+{   
+    display: flex;
+    flex-direction: row;
+    overflow: scroll hidden;
+    align-items: stretch;
+    scroll-snap-type: x mandatory;
+    
+    scrollbar-width: none;
+}
+
+.carousel-content > *
+{
+    flex: 0 0 100%;
+    
+    scroll-snap-align: start;
+    object-fit: contain;
+}
+
+.carousel-nav
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--carousel-spacing);
+}
+
+.carousel-dot
+{
+    height: 1rem;
+    padding: 0;
+    margin: 0;
+    aspect-ratio: 1.0;
+    border-radius: 50cqh;
+    background: cyan;
+    position: relative;
+}
+
+.carousel-dot::after
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    mask-size: 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: white;
+}
+.carousel-dot__img::after
+{
+    /* square like picture frame */
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2px"><rect x="18" y="18" width="28" height="28"/></svg>');
+}
+
+.carousel-dot__video::after
+{
+    /* triangle like play button */
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2px"><polygon points="24,16 52,32 24,48"/></svg>');
+}
+
+.carousel-dot__audio::after
+{
+    /*TODO audio wave shape */
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="2px"><path d="M10 32 L20 20 L20 44 Z"/></svg>');
+}
+
+:hover + .carousel-dot
+{
+    background-color: white;
+    cursor: pointer;
+}
+:active + .carousel-dot
+{
+    background-color: black;
+}
+:checked + .carousel-dot
+{
+    background-color: red;
+}
+
+.carousel-button:hover
+{
+    cursor: pointer;
+}
+.carousel-button.back
+{
+    margin-right: auto;
+}
+
+.carousel-button.next
+{
+    margin-left: auto;
+}

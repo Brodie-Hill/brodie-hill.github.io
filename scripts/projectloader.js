@@ -1,5 +1,5 @@
 import {makeExpandable} from "./expandables.js";
-    
+import {viewProject} from "./projectviewer.js";
 
 const projectJsonPath = "data/projects.json";
 const mediaPath = "data/media/";
@@ -11,7 +11,7 @@ const audioMedia = ["mp3", "wav"];
 const videoMedia = ["mp4"];
 
 
-function genMediaHtml(filePath, additionalAttribs, image = true, audio = true, video = true)
+export function genMediaHtml(filePath, additionalAttribs, image = true, audio = true, video = true)
 {
     const ext = filePath.split(".").pop().toLowerCase();
     const src = `${mediaPath}${filePath}`;
@@ -44,10 +44,10 @@ function linebrk()
     return linebrk;
 }
 
-function genTagRow(tags)
+export function genTagRow(tags, additionalClasses = ["flex-horizontal", "content-padding", "content-gap"])
 {
     const row = document.createElement("div");
-    row.classList.add("flex-horizontal", "content-padding", "content-gap")
+    row.classList.add(...additionalClasses)
 
     for(const tag of tags)
     {
@@ -123,14 +123,18 @@ function genCard(project)
     
     card.appendChild(banner);
     card.appendChild(body);
-    
+    card.addEventListener("click", (event) =>
+    {
+        viewProject(project)
+    });
+
     return card;
 }
 
 function genGroup(groupName, groupProjects)
 {
     const parent = document.createElement("div");
-    parent.classList.add("project-group", "sector-margin-blk-start", "content-margin-blk-end");
+    parent.classList.add("project-group", "sector-margin-blk-end", "content-margin-blk-start");
 
     const header = document.createElement("h2");
     header.classList.add("content-padding-blk", "sector-padding-inl")

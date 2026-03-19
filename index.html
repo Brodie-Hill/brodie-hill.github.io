@@ -12,16 +12,21 @@
         <link rel="stylesheet" href="css/utils.css" />
         <link rel="stylesheet" href="css/timeline-ul.css" />
         <link rel="stylesheet" href="css/expandables.css" />
+        <link rel="stylesheet" href="css/carousel.css" />
         <link rel="stylesheet" href="css/hamburger.css" />
+        <link rel="stylesheet" href="css/carousel.css" />
         <link rel="stylesheet" href="css/styles.css" />
         
         <!-- immediate scripts -->
         <script src="scripts/classtoggle.js"></script>
-        
+
         <!-- deferred scripts -->
         <script type="module" src="scripts/expandables.js" defer></script>
+        <script type="module" src="scripts/carousel.js" defer></script>
         <script type="module" src="scripts/projectloader.js" defer></script>
-        <script type="module" src="scripts/skillloader.js" defer></script>
+        <script type="module" src="scripts/projectviewer.js" defer></script>
+        <script src="scripts/skillloader.js" defer></script>
+        
     </head>
     <body>
         <header id="header-main" class="ignore-ptr-self">
@@ -147,15 +152,59 @@ Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus 
             </section>
             <span class="break-page"></span>
             <section id="projects">
-                <h1 class="centered sector-padding-blk sector-padding-inl nopad-bot">Projects</h1>
-                <!-- Populated by js -->
+                <h1 class="centered sector-margin-blk sector-padding-inl">Projects</h1>
                 <div id="projects-container" class="expandable-group">
+                    <!-- populated by js -->
+                </div>
+                <div id="project-viewer-overlay" class="sector-padding tint-dark" style="padding-top:var(--header-height);">
+                    <div id="project-viewer" class="grad-dark content sector-padding">
+                        <h2 id="pv-title">Template Title</h2>
+                        <div id="pv-tags"></div>
+                        <div class="flex-dynamic-2 content-gap">
+                            <div id="pv-media" class="carousel text-area"
+                                data-carousel-content="bg-dark"
+                                data-carousel-nav-dot="btn square"
+                                data-carousel-nav-button="grad-primary color-light small btn">
+                                
+                                <!-- populated by js -->
+                            </div>
+                            <div id="pv-about" class="text-area">
+                                <h3>About</h3>
+                                <p id="pv-description" class="expandable">Demo description.</p>
+                                <br>
+                                <h3>Credits</h3>
+                                <ul id="pv-credits">
 
+                                </ul>
+                            </div>                
+
+                        </div>
+                        <div id="links" class="text-area">
+                            <ul id="pv-speclinks" class="flex-horizontal content-gap"></ul>
+                            <ul id="pv-misclinks"></ul>
+                        </div>
+                        <div class="flex-horizontal" style="flex: 1; justify-content: flex-end; align-items: flex-end;">
+                            <button id="pv-close" class="btn chip grad-primary color-light">Close</span>
+                        </div>
+                    </div>
                 </div>
             </section>
+            <span class="break-page"></span>
         </main>
-        <footer>
-            <p>&copy; Brodie Hill 2025</p>
+        <footer class="grad-dark">
+            <p class="centered sector-padding-blk content-padding-inl">&copy; Brodie Hill 2025</p>
+            <script type="module" id="testbtnscr" defer>
+                import { viewProject } from './scripts/projectviewer.js';
+
+                const btn = document.createElement("button");
+                btn.textContent = "test";
+
+                btn.addEventListener("click", () => {
+                    viewProject(null);
+                });
+                
+                document.getElementById("testbtnscr").after(btn);
+            </script>
         </footer>
     </body>
 </html>

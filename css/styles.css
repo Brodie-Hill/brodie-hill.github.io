@@ -118,13 +118,7 @@ body
 #header-main nav a
 {    
     display:block;
-    color: #ddd;
     text-shadow: 0px 0px 5px black;
-
-    &:hover
-    {
-        color: white;
-    }
 }
 
 #header-main nav.active
@@ -280,6 +274,134 @@ section#projects .expand-trigger
     border: none;
     margin: var(--space-content);
 }
+
+section#projects .card
+{
+    z-index: 0;
+    transition: scale var(--trans-fast), rotate(var--trans-fast);
+}
+section#projects .card:hover
+{
+    cursor: pointer;
+    scale: 1.1;
+    z-index: 1;
+}
+
+#project-viewer-overlay
+{
+    position:fixed;
+    inset: 0;
+    background-color: var(--color-tint-dark);
+    opacity: 0;
+    transition: opacity var(--trans-slow);
+    pointer-events: none;
+    z-index: 5;
+    
+
+    &.active
+    {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+#project-viewer
+{
+    border-radius: calc(2 * var(--space-content));
+    border: 2px solid var(--color-tint);
+    transform: scaleX(0.5) scaleY(0.1);
+    transition: transform var(--trans-slow);
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-content);
+
+    &.active
+    {        
+        transform: scale(1.0) scaleY(1.0);
+    }
+}
+#pv-title
+{
+    display:flex;
+    gap: var(--space-content);
+    align-items: center;
+
+    >#pv-group
+    {
+        font-weight: normal;
+        opacity: 0.7;
+        font-size: 80%;
+    }
+    >#pv-name
+    {
+        background: var(--grad-accent);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    >#pv-date
+    {
+        text-align:right;
+        flex:1;
+        font-weight: normal;
+        opacity: 0.7;
+        font-size: 80%;
+    }
+}
+
+#project-viewer .carousel
+{
+    --carousel-spacing: var(--space-content);
+    flex: 1;
+    height: 22rem;
+}
+#pv-media
+{
+    aspect-ratio: calc(16/9);
+}
+.carousel .carousel-dot
+{
+    background-image: var(--grad-primary);
+    &::after
+    {
+        background-color: var(--color-accent);
+        opacity: 0.5;
+    }
+}
+
+.carousel :checked + .carousel-dot
+{
+    background-image: var(--grad-accent);
+    &::after
+    {
+        background-color: var(--color-primary);
+        opacity: 1.0;
+    }
+}
+#pv-about
+{
+    flex: 0.75;
+}
+
+#pv-speclinks
+{
+    justify-content: center;
+}
+#pv-misclinks
+{
+    color: white;
+    list-style: inside;
+
+    a
+    {
+        display: inline-block;
+        padding: var(--space-interaction-inl);
+    }
+}
+
 
 @media screen and (min-width: 750px)
 {
