@@ -25,7 +25,6 @@ export function viewProject(project)
 
 
     const groupSpan = `<span id="pv-group">${project.group}</span>`;
-    const nameSpan = `<span id="pv-name">${project.name}</span>`;
     const dateSpan = `<span id="pv-date">${project.date}</span>`;
     
     viewer.info.innerHTML = `${groupSpan} //${dateSpan}`;

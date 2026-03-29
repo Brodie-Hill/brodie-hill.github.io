@@ -48,7 +48,11 @@ body
         backdrop-filter: var(--filter-blur);
     }
     /* fix blocking when not enabled */
-    &:not(.active){pointer-events:none;}
+    &:not(.active){
+        /* same as ignore-ptr-self */
+        pointer-events: none;
+        &>:not(.ignore-ptr-self){pointer-events: all;}
+    }
 }
 
 #header-main>.content
