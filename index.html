@@ -29,7 +29,7 @@
         
     </head>
     <body>
-        <header id="header-main" class="ignore-ptr-self">
+        <header id="header-main">
             <script>
                 let lastScr = 0;
                 const header = document.getElementById("header-main");
@@ -59,13 +59,13 @@
                 <span class="break-line"></span>
                 <ul class="content" role="menu">
                     <li role="menuitem">
-                        <a class="large btn" href="#about" onclick="removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav')">About</a>
+                        <a class="large btn" href="#about" onclick="removeClass('active', '.active')">About</a>
                     </li>
                     <li role="menuitem">
-                        <a class="large btn" href="#projects" onclick="removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav')">Projects</a>
+                        <a class="large btn" href="#projects" onclick="removeClass('active', '.active')">Projects</a>
                     </li>
                     <li role="menuitem">
-                        <a class="large btn" href="#contact" onclick="removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav')">Contact</a>
+                        <a class="large btn" href="#contact" onclick="removeClass('active', '.active')">Contact</a>
                     </li>
                 </ul>
             </nav>
@@ -156,32 +156,35 @@ Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus 
                 <div id="projects-container" class="expandable-group">
                     <!-- populated by js -->
                 </div>
-                <div id="project-viewer-overlay" class="sector-padding tint-dark" style="padding-top:var(--header-height);">
-                    <div id="project-viewer" class="grad-dark content sector-padding">
-                        <h2 id="pv-title">Template Title</h2>
-                        <div id="pv-tags"></div>
-                        <div class="flex-dynamic-2 content-gap">
-                            <div id="pv-media" class="carousel text-area"
-                                data-carousel-content="bg-dark"
-                                data-carousel-nav-dot="btn square"
-                                data-carousel-nav-button="grad-primary color-light small btn">
-                                
-                                <!-- populated by js -->
+                <div id="project-viewer-overlay" class="content-padding-inl sector-padding-blk tint-dark" style="padding-top:var(--header-height);">
+                    <div id="project-viewer" class="grad-dark content">
+
+                            <div id="pv-info" class="light flex-horizontal content-gap"><span>groupname</span><span>date</span></div>
+                            <h2 id="pv-name"> Demo Title</h2>
+                            <div id="pv-tags"></div>                        <div id="pv-content">
+                            <div class="flex-dynamic-2 content-gap">
+                                <div id="pv-media" class="carousel text-area"
+                                    data-carousel-content="bg-dark"
+                                    data-carousel-nav-dot="btn square"
+                                    data-carousel-nav-button="grad-primary color-light small btn">
+                                    
+                                    <!-- populated by js -->
+                                </div>
+                                <div id="pv-about" class="text-area">
+                                    <h3>About</h3>
+                                    <p id="pv-description" class="expandable">Demo description.</p>
+                                    <br>
+                                    <h3>Credits</h3>
+                                    <ul id="pv-credits">
+
+                                    </ul>
+                                </div>                
+
                             </div>
-                            <div id="pv-about" class="text-area">
-                                <h3>About</h3>
-                                <p id="pv-description" class="expandable">Demo description.</p>
-                                <br>
-                                <h3>Credits</h3>
-                                <ul id="pv-credits">
-
-                                </ul>
-                            </div>                
-
-                        </div>
-                        <div id="links" class="text-area">
-                            <ul id="pv-speclinks" class="flex-horizontal content-gap"></ul>
-                            <ul id="pv-misclinks"></ul>
+                            <div id="links" class="text-area">
+                                <ul id="pv-speclinks" class="flex-horizontal content-gap"></ul>
+                                <ul id="pv-misclinks"></ul>
+                            </div>
                         </div>
                         <div class="flex-horizontal" style="flex: 1; justify-content: flex-end; align-items: flex-end;">
                             <button id="pv-close" class="btn chip grad-primary color-light">Close</span>
@@ -193,18 +196,6 @@ Duis et mauris nec enim consequat tristique et a eros. Etiam pellentesque lacus 
         </main>
         <footer class="grad-dark">
             <p class="centered sector-padding-blk content-padding-inl">&copy; Brodie Hill 2025</p>
-            <script type="module" id="testbtnscr" defer>
-                import { viewProject } from './scripts/projectviewer.js';
-
-                const btn = document.createElement("button");
-                btn.textContent = "test";
-
-                btn.addEventListener("click", () => {
-                    viewProject(null);
-                });
-                
-                document.getElementById("testbtnscr").after(btn);
-            </script>
         </footer>
     </body>
 </html>

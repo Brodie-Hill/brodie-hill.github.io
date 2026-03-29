@@ -5,7 +5,8 @@ const viewer = {
     overlay: document.getElementById("project-viewer-overlay"),
     root: document.getElementById("project-viewer"),
 
-    title: document.getElementById("pv-title"),
+    info: document.getElementById("pv-info"),
+    name: document.getElementById("pv-name"),
     tags: document.getElementById("pv-tags"),
     blurb: document.getElementById("pv-blurb"),
     media: document.getElementById("pv-media"),
@@ -26,8 +27,9 @@ export function viewProject(project)
     const groupSpan = `<span id="pv-group">${project.group}</span>`;
     const nameSpan = `<span id="pv-name">${project.name}</span>`;
     const dateSpan = `<span id="pv-date">${project.date}</span>`;
-    console.log(viewer)
-    viewer.title.innerHTML = `${groupSpan} // ${nameSpan}   ${dateSpan}`;
+    
+    viewer.info.innerHTML = `${groupSpan} //${dateSpan}`;
+    viewer.name.innerText = `${project.name}`;
     
     viewer.tags.innerHTML = "";
     viewer.tags.appendChild(genTagRow(project.tags, ["flex-horizontal", "content-gap", "centered"]));

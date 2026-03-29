@@ -43,6 +43,9 @@ function buildNav(carousel)
     const randId = "carousel-" + Math.random().toString(36).slice(2); // random string of letters and numbers
     const idBase = carousel.id || randId;
 
+    const dotsContainer = document.createElement("div");
+    dotsContainer.className = "carousel-nav__dots";
+    navContainer.append(dotsContainer);
     const controls = [];
     const content = Array.from(contentContainer.children);
 
@@ -65,8 +68,8 @@ function buildNav(carousel)
             carouselScrollTo(index);
         });
 
-        navContainer.appendChild(control);
-        navContainer.appendChild(dot);
+        dotsContainer.appendChild(control);
+        dotsContainer.appendChild(dot);
     };
 
     const lastIndex = contentContainer.childElementCount - 1;
@@ -103,20 +106,24 @@ function buildNav(carousel)
             
     updateUi();
 
+
     function updateUi()
     {
         controls.forEach((control, index) =>
         {
-            control.checked = (index == p);
+            const checked = (index == p);
+            control.checked = checked;
             backBtn.disabled = (p == 0);
             nextBtn.disabled = (p == lastIndex);
+            if (checked)
+                control.nextElementSibling.scrollIntoView({block: "nearest", inline: "center", behavior: "smooth"})
         });
     }
 
     function carouselScrollTo(index)
     {
         carousel.dataset.currentPage = (p = index).toString();
-        contentContainer.children[p].scrollIntoView({ behavior: "smooth" });
+        contentContainer.children[p].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center"});
         updateUi();
     }
 }
