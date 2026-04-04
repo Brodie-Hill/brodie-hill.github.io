@@ -118,6 +118,14 @@ function buildNav(carousel)
             if (checked)
                 control.nextElementSibling.scrollIntoView({block: "nearest", inline: "center", behavior: "smooth"})
         });
+        content.forEach((media, index) =>
+        {
+            if (media instanceof HTMLMediaElement)
+            {
+                if (index == p) media.play();
+                else media.pause();
+            }
+        });
     }
 
     function carouselScrollTo(index)
@@ -126,6 +134,24 @@ function buildNav(carousel)
         contentContainer.children[p].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center"});
         updateUi();
     }
+}
+
+export function setPlayable(carousel, playable)
+{
+    carousel.dataset.playable = `${playable}`;
+    const contentContainer = carousel.querySelector(".carousel-content")
+    const page = carousel.dataset.currentPage || "0";
+    const content = Array.from(contentContainer.children);
+    
+    content.forEach((media, index) =>
+    {
+        if (media instanceof HTMLMediaElement)
+        {
+            if (index == page && playable) media.play();
+            else media.pause();
+        }
+
+    });
 }
 
 export function makeCarousel(parent, addNav)

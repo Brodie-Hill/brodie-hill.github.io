@@ -1,5 +1,5 @@
 import {genMediaHtml, genTagRow} from "./projectloader.js";
-import {makeCarousel} from "./carousel.js";
+import {makeCarousel, setPlayable} from "./carousel.js";
 
 const viewer = {
     overlay: document.getElementById("project-viewer-overlay"),
@@ -85,6 +85,7 @@ export function closeProjectViewer()
 {
     viewer.overlay.classList.remove("active");
     viewer.root.classList.remove("active");
+    setPlayable(viewer.media.parentElement, false);
 }
 
 viewer.close.addEventListener("click", (event)=>{
