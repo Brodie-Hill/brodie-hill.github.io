@@ -1,0 +1,11 @@
+An aspiring Software Developer with an interest in game development and system design. I am a Bachelor of Software Engineering (Game Programming) graduate from Media Design School (Auckland 2025), completed remotely while based in Nelson. 
+
+I like building clean, reusable gameplay systems in Unity and C#, with a preference for versatile systems and reusability rather than one-off solutions.
+
+My experience combines self-driven development with formal study, including collaborative work using version control in team-based projects. This helped me understand how important shared direction, clear communication, and consistent alignment are in development teams.
+
+I am detail-oriented, but naturally consider how individual systems and features fit into the wider project - what their requirements are, how they need to be used, and where they sit in the big picture. I focus on implementing versatile systems that integrate well and produce reliable, consistent gameplay outcomes, and I find satisfaction in seeing the final result function as intended within the game.
+
+Outside of development, I enjoy playing games, 3D printing, collecting vinyl records, and playing my baritone ukulele.
+
+Currently working part-time in Nelson NZ, I am looking for full-time employment as a software developer, and am open to relocating or working remotely.

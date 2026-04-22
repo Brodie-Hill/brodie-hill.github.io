@@ -1,0 +1,2 @@
+Corridors of Time was a final capstone project developed during the last year of my study. It is a fast-paced roguelike built in Unity 5, centered around continuous battles through procedurally generated levels. The player must defeat enemies to charge the portal to the next level before the clock hits zero.
+The procedurally generated content allows for new enemy encounters in later levels, with difficulty scaling up as you progress.

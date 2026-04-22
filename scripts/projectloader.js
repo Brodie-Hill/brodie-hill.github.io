@@ -107,7 +107,7 @@ function genCard(project)
     if (project.date || project.authors)
     {
         const h4 = document.createElement("h4");
-        h4.innerText = `${project.date ? (project.date + "  •  ") : ""}${project.authors ? "Collab" : "Solo"}`;
+        h4.innerText = `${project.date ? (project.date + "  •  ") : ""}${(project.authors?.length > 1) ? "Collab" : "Solo"}`;
         h4.classList.add("light");
         body.appendChild(h4);
     }
@@ -134,7 +134,7 @@ function genCard(project)
 function genGroup(groupName, groupProjects)
 {
     const parent = document.createElement("div");
-    parent.classList.add("project-group", "sector-margin-blk-end", "content-margin-blk-start");
+    parent.classList.add("project-group", "content", "sector-margin-blk-end", "content-margin-blk-start");
 
     const header = document.createElement("h2");
     header.classList.add("content-padding-blk", "sector-padding-inl")
@@ -172,8 +172,8 @@ async function parseProjects()
     projects.sort(
         (a, b) =>
         {
-            if (a.featured > b.featured) return -1; // a before b
-            if (b.featured > a.featured) return 1; // a after b
+            if (a.order > b.order) return -1; // a before b
+            if (b.order > a.order) return 1; // a after b
             return 0;
         }
     );

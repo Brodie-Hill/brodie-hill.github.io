@@ -3,6 +3,10 @@
         "group": "Personal",
         "name": "Commit Msg Generator",
         "date": "June 2025",
+        "authors":
+        [
+            "Brodie Hill"
+        ],
         "tags":
         [
             "c++",
@@ -10,8 +14,8 @@
         ],
         "blurb":
             "A simple console wizard to help generate consistent commit messages using XML templates.",
-        "description": 
-            "",
+        "descriptionPath": 
+            "data/text/cmg.txt",
         "media":
         [
 
@@ -19,40 +23,24 @@
         "links":
         [
             {
-                "label": "Test Link A",
-                "a": "https://github.com/brodie-hill",
-                "feature": 1
+                "label": "Download Exe (Windows)",
+                "a": "https://github.com/Brodie-Hill/commit-message-generator/releases/tag/Release",
+                "feature": true
             },
             {
-                "label": "Test Link B",
-                "a": "https://github.com/brodie-hill",
-                "feature": 1
-            },
-            {
-                "label": "Test Link C",
-                "a": "https://github.com/brodie-hill"
-            },
-            {
-                "label": "Test Link D",
-                "a": "https://github.com/brodie-hill"
-            },
-            {
-                "label": "Test Link E",
-                "a": "https://github.com/brodie-hill"
-            },
-            {
-                "label": "Test Link F",
-                "a": "https://github.com/brodie-hill"
+                "label": "CMML Documentation",
+                "a": "https://docs.google.com/document/d/14b7hYey_OU8j_rgjHu_9sQscy_XxgQ4Dn93u62qbDz8/edit?usp=sharing"
             }
         ],
         "thumbnail": "project-cmg-0.png",
-        "featured": 2
+        "order": 1
     },
     {
         "group": "Personal",
         "name": "Portfolio Website",
         "date": "Aug-Sep 2025",
-        "tags": [
+        "tags":
+        [
             "HTML",
             "CSS",
             "JavaScript"
@@ -60,53 +48,44 @@
         "blurb":
             "A static site made to centralize links to my best projects and work. Hosted on github pages.",
         "description":
-            "",
+            "A static site made to centralize links to my best projects and work. Hosted on github pages.",
         "media":
         [
 
         ],
         "thumbnail": "project-portfoliosite-0.png",
-        "links": [
+        "links":
+        [
             {
-                "label": "Test Link A",
-                "a": "https://github.com/brodie-hill",
-                "feature": 1
-            },
-            {
-                "label": "Test Link B",
-                "a": "https://github.com/brodie-hill",
-                "feature": 1
-            },
-            {
-                "label": "Test Link C",
-                "a": "https://github.com/brodie-hill"
-            },
-            {
-                "label": "Test Link D",
-                "a": "https://github.com/brodie-hill"
+                "label": "Demo",
+                "a": "http://127.168.0.1:5500/index.html?returning",
+                "feature": true
             }
         ],
-        "featured": 1
+        "order": 1
     },
     {
-        "group": "MDS",
+        "group": "Media Design School",
         "name": "Corridors of Time",
         "date": "June 2024 - July 2025",
-        "authors": [
-            "Brodie Hill",
-            "Jason Day",
-            "Charlie Davies"
+        "authors":
+        [
+            "Brodie Hill - Game Programmer",
+            "Jason Day - Art Assets and Game Design",
+            "Charlie Davies - Enemy and AI Programmer"
         ],
-        "tags": [
+        "tags":
+        [
             "Unity",
             "C#"
         ],
         "blurb":
             "Final year-long project from my time at Media Design School.",
-        "description": 
-            "",
+        "descriptionPath": 
+            "data/text/cot.txt",
         "thumbnail": "project-cot-0.mp4",
-        "media": [
+        "media":
+        [
             "project-cot-0.mp4",
             "project-cot-1.png",
             "project-cot-2.png",
@@ -115,16 +94,138 @@
             "project-cot-5.png",
             "project-cot-6.png"
         ],
-        "links": [
+        "links":
+        [
+
+        ],
+        "order": 1
+    },
+    {
+        "group": "Media Design School",
+        "name": "Last Stand 2D",
+        "date": "2023",
+        "authors":
+        [
+            "Brodie Hill"
+        ],
+        "tags":
+        [
+            "C++",
+            "SFML"
+        ],
+        "blurb":
+            "C++ zombie slayer game.",
+        "description": 
+            "Simple C++ zombie slayer game. This was my fist raw C++ game project.",
+        "thumbnail": "project-laststand-1.png",
+        "media":
+        [
+            "project-laststand-0.mp4",
+            "project-laststand-0.png",
+            "project-laststand-1.png"
+        ],
+        "links":
+        [
+            
+        ],
+        "order": 1
+    },
+    {
+        "group": "Media Design School",
+        "name": "Defender: World",
+        "date": "2022",
+        "authors":
+        [
+            "Brodie Hill"
+        ],
+        "tags":
+        [
+            "Gamemaker"
+        ],
+        "blurb":
+            "Remake with a twist on the original arcade game 'Defender'.",
+        "descriptionPath": 
+            "data/text/defender.txt",
+        "thumbnail": "project-defender-1.png",
+        "media":
+        [
+            "project-defender-0.mp4",
+            "project-defender-1.png",
+            "project-defender-2.png",
+            "project-defender-3.png",
+            "project-defender-4.png"
+        ],
+        "links":
+        [
             {
-                "label": "Test Link A",
-                "a": "https://github.com/brodie-hill"
-            },
+                "label": "Download exe (Google Drive)",
+                "a": "https://drive.google.com/file/d/1Z2MmqIGCQgRJsbJdKnJzznFxU5BU6f36/view?usp=drive_link",
+                "feature": true
+            }
+
+        ],
+        "order": 1
+    },
+    {
+        "group": "Media Design School",
+        "name": "Atmospheric Ray-Marching",
+        "date": "2024",
+        "authors":
+        [
+            "Brodie Hill"
+        ],
+        "tags":
+        [
+            "Unity",
+            "C#",
+            "GLSL"
+        ],
+        "blurb":
+            "An experiment with ray-marching.",
+        "description": 
+            "An experiment with ray-marching.",
+        "thumbnail": "project-atmos-1.png",
+        "media":
+        [
+            "project-atmos-0.mp4",
+            "project-atmos-1.png"
+        ],
+        "links":
+        [
+
+        ]
+    },
+    {
+        "group": "Media Design School",
+        "name": "2 Days a Rancher",
+        "date": "2024",
+        "authors":
+        [
+            "Brodie Hill"
+        ],
+        "tags":
+        [
+            "Unity",
+            "C#"
+        ],
+        "blurb":
+            "Protect the alpaca herd!",
+        "description": 
+            "This Project is from an AI paper showcasing a simple wolf AI in action, the player must fend off progressing numbers of woves which have a dual goal to attach the alpaca herd, and secondarily attack the player in self-defense.",
+        "thumbnail": "",
+        "media":
+        [
+            "project-2dar-0.png",
+            "project-2dar-1.png"
+        ],
+        "links":
+        [
             {
-                "label": "Test Link B",
-                "a": "https://github.com/brodie-hill"
+                "label": "Download Exe (Google Drive)",
+                "a": "https://drive.google.com/file/d/1A9HpMeJWvpb66dZe0bHHLh-8L1NmY3WF/view?usp=sharing",
+                "feature": true
             }
         ],
-        "featured": 1
+        "order": 1
     }
 ]

@@ -1,0 +1,10 @@
+Defender: World is a remake of the arcade game Defender in GameMaker Studio.
+The player must both protect the civilians from abduction, while also avoiding the death of their pilots.
+If you run out of reserve pilots, you loose, and if the alien intruders eliminate all of your civilians, you also loose.
+There are three 'technologies' you can use to help you:
+• Ejection: If you are about to crash, and have reserve pilots left, you can eject and recover your ejectee in the next life.
+• Hyper-Drive Teleport: You can teleport to a random high-atmosphere location to try your luck in evading a bad situation. But this could put you in a neven worse one.
+• S-Bomb: This feature comes straight from the original game. Activating an S-Bomb eliminates all on-screen enemies.
+
+Defender: World features realistic aerodynamics, allowing for dynamic and fun movement play like gliding or aerobraking, as well as many unique enemies each with their own behaviour.
+More info can be seen in-game (Download link below).

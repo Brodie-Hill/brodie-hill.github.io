@@ -1,0 +1,5 @@
+A simple console wizard to help generate consistent commit messages using XML templates, putting the result into the Windows clipboard ready for pasting.
+
+I suggest creating a shortcut (.lnk) file to the exe, that way you can bind a key to open it quickly:
+
+[right click the shortcut file > properties > Shortcut tab > 'Shortcut Key']

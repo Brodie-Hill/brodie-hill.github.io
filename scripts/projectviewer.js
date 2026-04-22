@@ -1,5 +1,6 @@
 import {genMediaHtml, genTagRow} from "./projectloader.js";
 import {makeCarousel, setPlayable} from "./carousel.js";
+import {dumpIntoP} from "./p-dump.js";
 
 const viewer = {
     overlay: document.getElementById("project-viewer-overlay"),
@@ -48,8 +49,10 @@ export function viewProject(project)
 
     //makeCarousel(viewer.media);
 
-    viewer.description.innerText = project.description;
-
+    if (project.description)
+        viewer.description.innerText = project.description;
+    else
+        dumpIntoP(viewer.description, {defaultText: "This project has no description.", filePath: project.descriptionPath});
 
     viewer.credits.innerHTML = "";
     project.authors?.forEach(author =>
@@ -60,9 +63,7 @@ export function viewProject(project)
     });
 
 
-    viewer.description.innerText = project.description || "This project has no description.";
-
-
+    
     viewer.linksFeatured.innerHTML = "";
     viewer.linksList.innerHTML = "";
     project.links?.forEach((link) =>
