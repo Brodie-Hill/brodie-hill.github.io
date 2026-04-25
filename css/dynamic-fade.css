@@ -1,0 +1,106 @@
+@property --mask-top
+{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --mask-bottom
+{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --mask-left
+{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --mask-right
+{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+.k-fade
+{
+    --fade-size: 20px;
+
+    animation-timeline:
+        scroll(self block), scroll(self block),
+        scroll(self inline), scroll(self inline);
+    
+    animation-name:
+        fade-top,
+        fade-bottom,
+        fade-left,
+        fade-right;
+    
+    animation-range:
+        0px var(--fade-size), calc(100% - var(--fade-size)) 100%;
+
+    animation-direction:
+        normal, reverse;
+    
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
+    mask-image:
+        linear-gradient(to bottom, transparent, black var(--mask-top), black calc(100% - var(--mask-bottom)), transparent),
+        linear-gradient(to right, transparent, black var(--mask-left), black calc(100% - var(--mask-right)), transparent);
+    mask-composite: intersect;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+}
+
+@keyframes fade-top
+{
+    from
+    {
+        --mask-top: 0px;
+    }
+    to
+    {
+        --mask-top: var(--fade-size);
+    }
+}
+
+@keyframes fade-bottom
+{
+    from
+    {
+        --mask-bottom: 0px;
+    }
+    to
+    {
+        --mask-bottom: var(--fade-size);
+    }
+}
+
+@keyframes fade-left
+{
+    from
+    {
+        --mask-left: 0px;
+    }
+    to
+    {
+        --mask-left: var(--fade-size);
+    }
+}
+
+@keyframes fade-right
+{
+    from
+    {
+        --mask-right: 0px;
+    }
+    to
+    {
+        --mask-right: var(--fade-size);
+    }
+}

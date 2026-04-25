@@ -1,8 +1,13 @@
 
 ul.timeline-vertical
 {
+    --gap: 12px;
     display: grid;
-    column-gap: var(--space-content);
+     /* need 0 row gap since it splits the bullet points' line too, not jsut the content column */
+     /* will use padding bottom on the content cells instead */
+    /* row-gap: var(--space-content); */
+    row-gap: 0;
+    column-gap: var(--gap);
     grid-template-columns: min-content 1fr;
     align-items: start;
     list-style: none;
@@ -43,6 +48,7 @@ ul.timeline-vertical .marker
     }
 }
 
+
 ul.timeline-vertical .bullet
 {
     width: 10px;
@@ -50,4 +56,14 @@ ul.timeline-vertical .bullet
     background-color: transparent;
     border: 2px solid black;
     border-radius: 50cqh;
+}
+
+ul.timeline-vertical li:not(.marker)
+{
+    padding-bottom: var(--gap);
+
+    &:last-child
+    {
+        padding-bottom: 0;
+    }
 }

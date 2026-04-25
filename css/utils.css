@@ -80,6 +80,8 @@ a
 .content-padding { padding: var(--space-content); }
 .content-padding-blk { padding-block: var(--space-content); }
 .content-padding-inl { padding-inline: var(--space-content); }
+.content-padding-blk-start { padding-block-start: var(--space-content); }
+.content-padding-blk-end  { padding-block-end: var(--space-content); }
 .content-margin { margin: var(--space-content); }
 .content-margin-blk { margin-block: var(--space-content); }
 .content-margin-inl { margin-inline: var(--space-content); }
@@ -89,6 +91,8 @@ a
 .sector-padding { padding: var(--space-sector-blk) var(--space-sector-inl); }
 .sector-padding-blk { padding-block: var(--space-sector-blk); }
 .sector-padding-inl { padding-inline: var(--space-sector-inl); }
+.sector-padding-blk-start { padding-block-start: var(--space-sector-blk); }
+.sector-padding-blk-end { padding-block-end: var(--space-sector-blk); }
 .sector-margin { margin: var(--space-sector-blk) var(--space-sector-inl); }
 .sector-margin-blk { margin-block: var(--space-sector-blk); }
 .sector-margin-inl { margin-inline: var(--space-sector-inl); }
@@ -141,7 +145,6 @@ a
     justify-content: stretch;
     grid-template-columns: repeat(1, 1fr);
     grid-auto-flow: row;
-    overflow:visible;
     align-items: stretch;
 }
 
@@ -232,7 +235,6 @@ a
     position: relative;
     background: var(--color-tint);
     border-radius: 50cqh;
-    overflow: hidden;
     flex:1;
     box-shadow: var(--shadow-dark-s);
 }
@@ -258,8 +260,10 @@ a
     z-index:4;
     border-radius: calc(2 * var(--space-content));
     overflow: hidden;
+    box-sizing: border-box;
     border: 1px solid var(--color-tint);
-    box-shadow: var(--shadow-light-s);
+    padding: 0;
+    align-items: stretch;
 }
 
 .card-banner
@@ -335,7 +339,7 @@ a
 
 .left { text-align: left; }
 
-.centered { text-align: center; align-self: center; justify-content:center;}
+.centered { text-align: center; align-self: center; justify-content:center; margin-inline: auto;}
 
 .right { text-align: right; }
 
@@ -409,11 +413,17 @@ a
         /* class to do the hover effects for interactions like buttons */
 
         transform: scale(1);
-        transition: scale var(--trans-fast);
+        transition: transform var(--trans-fast);
+        
+        z-index: 0;
 
         &:hover
         {
-            transform: scale(1.1);
+            z-index: 1;
+
+            transform: scale(1.07);
+            cursor: pointer;
+            z-index: 1;
         }
     }
     

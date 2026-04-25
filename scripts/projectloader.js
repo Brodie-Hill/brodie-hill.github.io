@@ -74,7 +74,7 @@ export function genTagRow(tags, additionalClasses = ["flex-horizontal", "content
 function genCard(project)
 {
     const card = document.createElement("div");
-    card.classList.add("card", "grad-dark");
+    card.classList.add("card", "grad-dark", "btn");
 
     const thumbnailSource = project.thumbnail || (project.media?.[0]);
 

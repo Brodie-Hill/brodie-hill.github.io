@@ -4,14 +4,10 @@
   ------------------------------------------------------------*/
 
 /* Size block borders logically and set a base text size */ 
-html
-{
-    box-sizing: border-box;
-}
 
 *, *:before, *:after
 {
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 /* Set a base text size. All other text defined in REMs */ 

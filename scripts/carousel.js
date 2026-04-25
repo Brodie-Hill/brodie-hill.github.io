@@ -44,7 +44,7 @@ function buildNav(carousel)
     const idBase = carousel.id || randId;
 
     const dotsContainer = document.createElement("div");
-    dotsContainer.className = "carousel-nav__dots";
+    dotsContainer.className = "carousel-nav__dots k-fade";
     navContainer.append(dotsContainer);
     const controls = [];
     const content = Array.from(contentContainer.children);

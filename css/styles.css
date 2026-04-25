@@ -284,12 +284,10 @@ section#projects .expand-trigger
 section#projects .card
 {
     z-index: 0;
-    transition: scale var(--trans-fast), rotate(var--trans-fast);
 }
+
 section#projects .card:hover
 {
-    cursor: pointer;
-    scale: 1.1;
     z-index: 1;
 }
 
