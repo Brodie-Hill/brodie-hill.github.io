@@ -1,4 +1,3 @@
-import {makeExpandable} from "./expandables.js";
 import {viewProject} from "./projectviewer.js";
 
 const projectJsonPath = "data/projects.json";
@@ -196,7 +195,6 @@ async function parseProjects()
         let rowGroup = genGroup(group, projects);
 
         container.appendChild(rowGroup);
-        makeExpandable(rowGroup);
     }
 }
 

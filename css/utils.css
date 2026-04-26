@@ -236,7 +236,7 @@ a
     background: var(--color-tint);
     border-radius: 50cqh;
     flex:1;
-    box-shadow: var(--shadow-dark-s);
+    border: 1px solid var(--color-tint-light);
 }
 
 .progress-bar-fill

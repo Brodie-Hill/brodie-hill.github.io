@@ -257,28 +257,10 @@ section#about select#skill-category
     padding-right: 30px;
 }
 
-section#about .expandable
+section#about article .scroll
 {
-    --collapsed-height: 24rem;
-    --fade-size: 5rem;
-}
-
-section#projects .expandable
-{
-    --collapsed-height: 64rem;
-    --fade-size: 5rem;
-}
-section#projects .expand-trigger
-{
-    background: var(--grad-primary);
-    color: var(--color-light);
-}
-.expand-trigger
-{
-    display: block;
-    justify-self: center;
-    border: none;
-    margin: var(--space-content);
+    max-height: 28rem;
+    overflow: auto;
 }
 
 section#projects .card
@@ -480,10 +462,7 @@ section#projects .card:hover
             filter: blur(6px);
         }
     }
-    
-    #header-main>#header-main-content
-    { }
-
+ 
     #header-main .hamburger
     {
         display: none;
