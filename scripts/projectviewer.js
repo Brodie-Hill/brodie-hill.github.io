@@ -1,5 +1,4 @@
 import {genMediaHtml, genTagRow} from "./projectloader.js";
-import {makeCarousel, setPlayable} from "./carousel.js";
 import {dumpIntoP} from "./p-dump.js";
 
 const viewer = {
@@ -16,7 +15,8 @@ const viewer = {
     linksFeatured: document.getElementById("pv-speclinks"),
     linksList: document.getElementById("pv-misclinks"),
     credits: document.getElementById("pv-credits"),
-    close: document.getElementById("pv-close")
+    close: document.getElementById("pv-close"),
+    intersectionObserver: new IntersectionObserver(checkPlayable, {threshold: 0.25})
 }
 
 export function viewProject(project)
@@ -36,19 +36,22 @@ export function viewProject(project)
 
 
     viewer.media.innerHTML = "";
-    
-    project.media?.forEach((mediaPath) =>
-    {
-        const mediaElement = genMediaHtml(mediaPath, {"controls": true});
-        viewer.media.appendChild(mediaElement);
-    });
-    if (viewer.media.childElementCount == 0)
+    viewer.intersectionObserver.disconnect();
+
+    if (!project.media || project.media.length == 0)
     {
         viewer.media.appendChild(genMediaHtml("project-media-placeholder.png", {"controls": false}))
     }
-
-    //makeCarousel(viewer.media);
-
+    else
+    {
+        project.media?.forEach((mediaPath) =>
+        {
+            const mediaElement = genMediaHtml(mediaPath, {"controls": true});
+            viewer.media.appendChild(mediaElement);
+            viewer.intersectionObserver.observe(mediaElement);
+        });
+    }
+        
     if (project.description)
         viewer.description.innerText = project.description;
     else
@@ -63,7 +66,6 @@ export function viewProject(project)
     });
 
 
-    
     viewer.linksFeatured.innerHTML = "";
     viewer.linksList.innerHTML = "";
     project.links?.forEach((link) =>
@@ -82,11 +84,49 @@ export function viewProject(project)
         }
     });
 }
+
 export function closeProjectViewer()
 {
     viewer.overlay.classList.remove("active");
     viewer.root.classList.remove("active");
-    setPlayable(viewer.media.parentElement, false);
+    
+    Array.from(viewer.media.children).forEach(stopMedia);
+
+    viewer.intersectionObserver.disconnect();
+}
+
+function checkPlayable(entries)
+{
+    entries.forEach(entry =>
+    {
+        const media = entry.target;
+
+        if (!entry.isIntersecting)
+        {
+            pauseMedia(media);
+        }
+        else if (viewer.media.hasAttribute("autoplay"))
+        {
+            startMedia(media)?.catch(err => console.warn(`Autoplay failed: ${err}`));
+        }
+    });
+}
+
+function startMedia(mediaElement)
+{
+    return mediaElement?.play?.() ?? null;
+}
+
+function pauseMedia(mediaElement)
+{
+    mediaElement?.pause?.();
+}
+
+function stopMedia(mediaElement)
+{
+    mediaElement?.pause?.();
+    if ("currentTime" in mediaElement)
+        mediaElement.currentTime = 0;
 }
 
 viewer.close.addEventListener("click", (event)=>{
@@ -98,3 +138,4 @@ viewer.overlay.addEventListener("click", (event)=>{
     if (event.target != event.currentTarget) return;
     closeProjectViewer()
 });
+window.addEventListener("closeAll", closeProjectViewer);

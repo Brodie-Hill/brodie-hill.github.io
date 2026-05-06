@@ -31,7 +31,6 @@ export class KMarquee extends HTMLElement
 
 
     #shadow = null;
-    #wrapper = null;
     #slot = null;
     #updater = null;
     #animation = null;

@@ -11,10 +11,9 @@
         <link rel="stylesheet" href="css/reset.css" />
 
         <link rel="stylesheet" href="css/utils.css" />
-
+        <link rel="stylesheet" href="css/no-scrollbar.css" />
         <link rel="stylesheet" href="css/dynamic-fade.css" />
         <link rel="stylesheet" href="css/timeline-ul.css" />
-        <link rel="stylesheet" href="css/carousel.css" />
         <link rel="stylesheet" href="css/hamburger.css" />
 
         <link rel="stylesheet" href="css/styles.css" />
@@ -22,14 +21,30 @@
         <!-- immediate scripts -->
         <script src="scripts/classtoggle.js"></script>
 
+        <script>
+            // set up global reset event
+            // addatching to window lets modules subscribe to this event without needing to know about each other
+            window.closeAll = function()
+            {
+                // let modules subscribe to this event
+                window.dispatchEvent(new Event("closeAll"));
+            }
+        </script>
+
+        <script>
+            // for mobile nav mode, close hamburger / header if open
+            window.addEventListener("closeAll", () => {
+                removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav');
+            })
+        </script>
         <!-- deferred scripts -->
         <script type="module" src="scripts/p-dump.js" defer></script>
         <script type="module" src="scripts/marquee.js" defer></script>
         <script type="module" src="scripts/carousel.js" defer></script>
+        
         <script type="module" src="scripts/projectloader.js" defer></script>
         <script type="module" src="scripts/projectviewer.js" defer></script>
         <script src="scripts/skillloader.js" defer></script>
-        
     </head>
     <body>
         <header id="header-main">
@@ -62,13 +77,13 @@
                 <span class="break-line"></span>
                 <ul class="content" role="menu">
                     <li role="menuitem">
-                        <a class="large btn" href="#about" onclick="removeClass('active', '.active')">About</a>
+                        <a class="large btn" href="#about" onclick="window.closeAll()">About</a>
                     </li>
                     <li role="menuitem">
-                        <a class="large btn" href="#projects" onclick="removeClass('active', '.active')">Projects</a>
+                        <a class="large btn" href="#projects" onclick="window.closeAll()">Projects</a>
                     </li>
                     <li role="menuitem">
-                        <a class="large btn" href="#contact" onclick="removeClass('active', '.active')">Contact</a>
+                        <a class="large btn" href="#contact" onclick="window.closeAll()">Contact</a>
                     </li>
                 </ul>
             </nav>
@@ -173,21 +188,19 @@
                             <h2 id="pv-name"> Demo Title</h2>
                             <div id="pv-tags"></div>                        <div id="pv-content">
                             <div class="flex-dynamic-2 content-gap">
-                                <div id="pv-media" class="carousel text-area"
-                                    data-carousel-content="bg-dark"
-                                    data-carousel-nav-dot="btn square"
-                                    data-carousel-nav-button="grad-primary color-light small btn">
-                                    
+                                <k-carousel id="pv-media" class="text-area" style="flex:1.2;" autoplay>
                                     <!-- populated by js -->
-                                </div>
+                                </k-carousel>
                                 <div id="pv-about" class="text-area">
-                                    <h3>About</h3>
-                                    <p id="pv-description">Demo description.</p>
-                                    <br>
-                                    <h3>Credits</h3>
-                                    <ul id="pv-credits">
+                                    <div class="k-fade no-scrollbar">
+                                        <h3>About</h3>
+                                        <p id="pv-description"></p>
+                                        <br>
+                                        <h3>Credits</h3>
+                                        <ul id="pv-credits">
 
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>                
 
                             </div>

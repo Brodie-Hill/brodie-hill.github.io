@@ -340,17 +340,67 @@ section#projects .card:hover
     color: transparent;
     text-align: center;
 }
-#project-viewer .carousel
+#pv-about
 {
-    --carousel-spacing: var(--space-content);
-    flex: 1;
-    height: 32rem;
+    position: relative;
+    
+    >*
+    {
+        position: absolute;
+        inset: var(--space-content);
+        overflow-y: auto;
+    }
 }
-#pv-media
+#project-viewer 
 {
-    aspect-ratio: calc(16/9);
+    
 }
-.carousel .carousel-dot
+#pv-media::part(content)
+{
+    min-height: 0;
+    
+    aspect-ratio: 16 / 9;
+
+    --color-a: rgb(6, 6, 7);
+    --color-b: rgb(14, 14, 19);
+
+    --grad-a: radial-gradient(135deg, #2e2e2e, #000000);
+    --grad-b: linear-gradient(0deg, black 0%, black 100%);
+}
+
+
+#pv-media::part(nav-button)
+{
+    background: var(--grad-primary);
+    color: white;
+    border-radius: 1px;
+    border: none;
+    height: 2rem;
+    aspect-ratio: 1;
+}
+
+
+#pv-media::part(nav-dot)
+{
+    background: var(--color-tint);
+}
+
+#pv-media::part(nav-dot):hover
+{
+    filter: brightness(1.3);
+}
+
+#pv-media::part(nav-dot-active)
+{
+    background: var(--color-primary);
+}
+
+k-carousel
+{
+    --gap: var(--space-content);
+}
+
+k-carousel .carousel-dot
 {
     background-image: var(--grad-primary);
     &::after
