@@ -58,8 +58,10 @@ function genSkills(group, skills)
         const profGrade = evaluateProficiency(skill.proficiency);
 
         let li = document.createElement("li");
-
-        const name = document.createElement("span");
+        
+        const name = document.createElement("k-marquee");
+        name.setAttribute("pause", "1.2");
+        name.setAttribute("speed", "30");
         name.innerText = skill.name;
         name.classList.add("skill-name");
         li.appendChild(name);

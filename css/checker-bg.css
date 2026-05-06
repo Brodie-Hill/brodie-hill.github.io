@@ -1,0 +1,68 @@
+.checkerboard-dichrome, .checkerboard-digradial
+{
+    --mask: url("/graphical/checkersample.png");
+    --size: 20px;
+    
+    position: relative;
+    z-index: 0;
+}
+
+.checkerboard-dichrome
+{
+    --color-a: lightslategray;
+    --color-b: darkslategrey;
+
+    background-color: var(--color-b);
+}
+
+.checkerboard-dichrome::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-color: var(--color-a);
+
+    mask-image: var(--mask);
+    mask-size: var(--size) var(--size);
+    mask-repeat: repeat;
+    
+    mask-mode: luminance;
+
+    -webkit-mask-image: var(--mask);
+    -webkit-mask-size: var(--size) var(--size);
+    -webkit-mask-repeat: repeat;
+    
+    image-rendering: pixelated;
+}
+
+.checkerboard-digradial
+{
+    --grad-a: radial-gradient(circle, #f43f5e 0%, #881337 100%);
+    --grad-b: radial-gradient(circle, #fbbf24 0%, #92400e 100%);
+
+    background-image: var(--grad-b);
+}
+
+.checkerboard-digradial::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image: var(--grad-a);
+    
+    mask-image: var(--mask);
+    mask-size: var(--size) var(--size);
+    mask-repeat: repeat;
+
+    mask-mode: luminance;
+
+    -webkit-mask-image: var(--mask);
+    -webkit-mask-size: var(--size) var(--size);
+    -webkit-mask-repeat: repeat;
+
+    image-rendering: pixelated;
+}

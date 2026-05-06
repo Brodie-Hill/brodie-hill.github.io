@@ -10,7 +10,7 @@
     --color-tint-light: rgba(207, 214, 214, 0.35);
     --color-tint-dark: rgba(27, 27, 28, 0.45);
     /* design colors */
-    --color-primary: rgb(96, 157, 255);
+    --color-primary: rgb(73, 105, 247);
     --grad-primary: linear-gradient(135deg, #6a11cb, #1756c4);
 
     --color-accent: rgb(236, 148, 48);
@@ -68,6 +68,17 @@ a
 }
 
 /* ======================== UTILITY LAYOUT ======================== */
+
+.relative
+{
+    position: relative;
+}
+
+.absolute
+{
+    position: absolute;
+    inset: 0;
+}
 
 .content
 {
@@ -236,7 +247,7 @@ a
     background: var(--color-tint);
     border-radius: 50cqh;
     flex:1;
-    box-shadow: var(--shadow-dark-s);
+    border: 1px solid var(--color-tint-light);
 }
 
 .progress-bar-fill
@@ -407,25 +418,6 @@ a
     {
         max-width: 1200px;
     }
-
-    .btn
-    {
-        /* class to do the hover effects for interactions like buttons */
-
-        transform: scale(1);
-        transition: transform var(--trans-fast);
-        
-        z-index: 0;
-
-        &:hover
-        {
-            z-index: 1;
-
-            transform: scale(1.07);
-            cursor: pointer;
-            z-index: 1;
-        }
-    }
     
     .logo
     {
@@ -442,4 +434,27 @@ a
     {
         flex-direction: row;
     }
+}
+
+@media (pointer: fine)
+{
+    .btn, k-carousel::part(nav-button)
+    {
+        /* class to do the hover effects for interactions like buttons */
+
+        transform: scale(1);
+        transition: transform var(--trans-fast);
+        
+        z-index: 0;
+    }
+    .btn:hover, k-carousel::part(nav-button):hover
+    {
+        z-index: 1;
+
+        transform: scale(1.05);
+        cursor: pointer;
+        z-index: 1;
+        filter: brightness(1.2);
+    }
+
 }

@@ -28,7 +28,7 @@
 
 .k-fade
 {
-    --fade-size: 20px;
+    --fade-size: 45px;
 
     animation-timeline:
         scroll(self block), scroll(self block),
