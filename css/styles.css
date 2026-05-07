@@ -343,12 +343,15 @@ section#projects .card:hover
 #pv-about
 {
     position: relative;
-    
+
+    min-height: 20rem;
+
     >*
     {
         position: absolute;
         inset: var(--space-content);
         overflow-y: auto;
+
     }
 }
 #project-viewer 
@@ -364,8 +367,19 @@ section#projects .card:hover
     --color-a: rgb(6, 6, 7);
     --color-b: rgb(14, 14, 19);
 
-    --grad-a: radial-gradient(135deg, #2e2e2e, #000000);
-    --grad-b: linear-gradient(0deg, black 0%, black 100%);
+    --grad-a: linear-gradient(
+        135deg, 
+        rgb(18, 21, 26) 0%, 
+        rgb(29, 36, 46) 50%, 
+        rgb(18, 21, 26) 100%
+    );
+
+    --grad-b: linear-gradient(
+        135deg, 
+        rgb(24, 29, 37) 0%, 
+        rgb(46, 57, 77) 50%, 
+        rgb(24, 29, 37) 100%
+    );
 }
 
 #pv-speclinks
@@ -395,7 +409,7 @@ k-carousel::part(content)
     --color-a: transparent;
     --color-b: transparent;
 
-    --grad-a: radial-gradient(0deg, transparent, transparent);
+    --grad-a: linear-gradient(0deg, transparent, transparent);
     --grad-b: linear-gradient(0deg, transparent, transparent);
 }
 k-carousel::part(nav-button)
@@ -470,6 +484,7 @@ k-carousel::part(nav-dot-active)
     #pv-about
     {
         flex: 0.75;
+        min-height: 0;
     }
 
     k-carousel.project-cards
