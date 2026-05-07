@@ -278,9 +278,9 @@ export class KCarousel extends HTMLElement
 
         if (!targets.content) return;
 
-        targets.content.scrollIntoView({ behavior : "smooth", block: "start", inline: "nearest"});
+        targets.content.scrollIntoView({ behavior : "smooth", block: "nearest", inline: "nearest"});
         
-        targets.dot?.scrollIntoView({ behavior : "smooth", block: "start", inline: "center"});
+        targets.dot?.scrollIntoView({ behavior : "smooth", block: "nearest", inline: "center"});
     }
 
     scrollBy(amount)
