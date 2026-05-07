@@ -139,8 +139,8 @@ function genGroup(groupName, groupProjects)
     header.classList.add("content-padding-blk", "sector-padding-inl")
     header.textContent = groupName;
     
-    let cards = document.createElement("div");
-    cards.classList.add("grid", "content-gap", "content-padding-blk", "sector-padding-inl", "content-gap", "nopad-bot");
+    let cards = document.createElement("k-carousel");
+    cards.classList.add("project-cards","sector-padding-inl", "content-padding-blk", "nopad-bot");
 
     for (const project of groupProjects)
     {

@@ -191,6 +191,13 @@ a
     text-decoration: none;
 }
 
+.btn:disabled
+{
+    opacity: 0.5;
+    filter: saturate(0.5);
+    cursor: not-allowed;
+}
+
 .logo
 {
     background-color: var(--color-tint-light);
@@ -447,7 +454,7 @@ a
         
         z-index: 0;
     }
-    .btn:hover, k-carousel::part(nav-button):hover
+    .btn:hover:not(:disabled), k-carousel::part(nav-button):hover:not(:disabled)
     {
         z-index: 1;
 

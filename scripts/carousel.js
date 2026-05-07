@@ -2,6 +2,7 @@
 import kFade from "../css/dynamic-fade.css" with { type: "css" };
 import noScrollbar from "../css/no-scrollbar.css" with { type: "css" }
 import checker from "../css/checker-bg.css" with { type: "css" }
+import Range from "../scripts/range.js";
 
 export class KCarousel extends HTMLElement
 {
@@ -30,7 +31,7 @@ export class KCarousel extends HTMLElement
             ::slotted(*)
             {
                 box-sizing: border-box;
-                flex: 0 0 100%;
+                flex: 0 0 calc((100% - var(--gap) * (var(--per-page) - 1)) / var(--per-page));
 
                 scroll-snap-align: start;
                 object-fit: contain;
@@ -44,7 +45,7 @@ export class KCarousel extends HTMLElement
                 height: 100%;
                 scroll-snap-type: x mandatory;
                 scroll-behavior: smooth;
-                gap: 1px;
+                gap: var(--gap);
             }
 
             .controls
@@ -77,11 +78,18 @@ export class KCarousel extends HTMLElement
             {
             }
             
-            button:hover
+            button:hover:not(:disabled)
             {
                 cursor: pointer;
             }
             
+            button:disabled
+            {
+                opacity: 0.5;
+                filter: saturate(0.5);
+                cursor: not-allowed;
+            }
+
             .pagi-dot
             {
                 height: 10px;
@@ -135,8 +143,9 @@ export class KCarousel extends HTMLElement
     #shadow = null;
     #pagiDotInputs = [];
     #refs = {};
-    #currentPage = 0;
+    #currentItems = new Range(0, 0);
     #changeObserver = null;
+    #resizeObserver = null;
 
 
     constructor()
@@ -151,6 +160,7 @@ export class KCarousel extends HTMLElement
         this.#shadow.appendChild(content);
 
         this.#changeObserver = new MutationObserver(this.#onRefresh.bind(this));
+        this.#resizeObserver = new ResizeObserver(this.#onScroll.bind(this));
     }
 
     #attachRefs(root)
@@ -169,13 +179,15 @@ export class KCarousel extends HTMLElement
     connectedCallback()
     {  
         this.#changeObserver.observe(this, { attributes: true, childList: true });
+        this.#resizeObserver.observe(this.#refs.track);
 
         requestAnimationFrame(() => { this.#onRefresh(); })
     }
 
     disconnectedCallback()
     {
-        this.#changeObserver.unobserve(this);
+        this.#changeObserver.disconnect();
+        this.#resizeObserver.disconnect();
     }
     
     attributeChangedCallback(name, oldValue, newValue)
@@ -203,19 +215,24 @@ export class KCarousel extends HTMLElement
             behavior: "instant"
         });
 
-        this.#currentPage = 0;
+        const perPage = parseInt(getComputedStyle(this).getPropertyValue("--per-page"));
+        
+        this.#currentItems = new Range(0, perPage - 1);
         this.#recreateDots();
     }
 
     #onScroll()
     {
         const track = this.#refs.track;
-        const currentPage = Math.round(track.scrollLeft / track.clientWidth);
+        const perPage = parseInt(getComputedStyle(this).getPropertyValue("--per-page"));
 
-        if (currentPage != this.#currentPage)
+        const newStart = Math.round(track.scrollLeft / (track.scrollWidth / this.children.length));
+
+        const newRange = new Range(newStart, newStart + perPage - 1);
+        if (!newRange.equals(this.#currentItems))
         {
-            this.#currentPage = currentPage;
-            this.#backSyncDots();
+            this.#currentItems = newRange;
+            this.#backSyncNav();
         }
     }
 
@@ -234,22 +251,25 @@ export class KCarousel extends HTMLElement
             input.onclick = () => this.scrollTo(index);
             input.part = `nav-dot`;
 
-            input.classList.toggle("active", index == this.#currentPage);
-            input.part.toggle("nav-dot-active", index == this.#currentPage);
-
             this.#refs.pagi.appendChild(input);
             this.#pagiDotInputs.push(input);
         }
 
+        this.#backSyncNav();
     }
 
-    #backSyncDots()
+    #backSyncNav()
     {
         this.#pagiDotInputs.forEach((dot, index) =>
         {
-            dot.classList.toggle("active", index == this.#currentPage);
-            dot.part.toggle("nav-dot-active", index == this.#currentPage);
+            console.log("Testing dot", index, "against range", this.#currentItems.start, "-", this.#currentItems.end);
+            const active = this.#currentItems.test(index);
+            console.log("Dot", index, "is", active ? "active" : "inactive");
+            dot.classList.toggle("active", active);
+            dot.part.toggle("nav-dot-active", active);
         });
+        this.#refs.btnPrev.disabled = this.#currentItems.test(0);
+        this.#refs.btnNext.disabled = this.#currentItems.test(this.children.length - 1);
     }
 
     scrollTo(index)
@@ -265,7 +285,7 @@ export class KCarousel extends HTMLElement
 
     scrollBy(amount)
     {
-        this.scrollTo(this.#currentPage += amount);
+        this.scrollTo(this.#currentItems.offset(amount));
     }
 }
 

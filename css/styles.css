@@ -265,12 +265,12 @@ section#about article .scroll
 
 section#projects .card
 {
-    z-index: 0;
+    transition: none;
 }
 
 section#projects .card:hover
 {
-    z-index: 1;
+    transform: none;
 }
 
 #project-viewer-overlay
@@ -368,58 +368,6 @@ section#projects .card:hover
     --grad-b: linear-gradient(0deg, black 0%, black 100%);
 }
 
-
-#pv-media::part(nav-button)
-{
-    background: var(--grad-primary);
-    color: white;
-    border-radius: 1px;
-    border: none;
-    height: 2rem;
-    aspect-ratio: 1;
-}
-
-
-#pv-media::part(nav-dot)
-{
-    background: var(--color-tint);
-}
-
-#pv-media::part(nav-dot):hover
-{
-    filter: brightness(1.3);
-}
-
-#pv-media::part(nav-dot-active)
-{
-    background: var(--color-primary);
-}
-
-k-carousel
-{
-    --gap: var(--space-content);
-}
-
-k-carousel .carousel-dot
-{
-    background-image: var(--grad-primary);
-    &::after
-    {
-        background-color: var(--color-accent);
-        opacity: 0.5;
-    }
-}
-
-.carousel :checked + .carousel-dot
-{
-    background-image: var(--grad-accent);
-    &::after
-    {
-        background-color: var(--color-primary);
-        opacity: 1.0;
-    }
-}
-
 #pv-speclinks
 {
     justify-content: center;
@@ -434,6 +382,46 @@ k-carousel .carousel-dot
         display: inline-block;
         padding: var(--space-interaction-inl);
     }
+}
+
+k-carousel
+{
+    --gap: var(--space-content);
+    width: 100%;
+}
+
+k-carousel::part(content)
+{
+    --color-a: transparent;
+    --color-b: transparent;
+
+    --grad-a: radial-gradient(0deg, transparent, transparent);
+    --grad-b: linear-gradient(0deg, transparent, transparent);
+}
+k-carousel::part(nav-button)
+{
+    background: var(--grad-primary);
+    color: white;
+    border-radius: 1px;
+    border: none;
+    height: 2rem;
+    aspect-ratio: 1;
+}
+
+
+k-carousel::part(nav-dot)
+{
+    background: var(--color-tint);
+}
+
+k-carousel::part(nav-dot):hover
+{
+    filter: brightness(1.3);
+}
+
+k-carousel::part(nav-dot-active)
+{
+    background: var(--color-primary);
 }
 
 
@@ -482,6 +470,11 @@ k-carousel .carousel-dot
     #pv-about
     {
         flex: 0.75;
+    }
+
+    k-carousel.project-cards
+    {
+        --per-page: 2;
     }
 }
 
@@ -599,5 +592,10 @@ k-carousel .carousel-dot
         {
             opacity: 1;
         }
+    }
+
+    k-carousel.project-cards
+    {
+        --per-page: 3;
     }
 }
