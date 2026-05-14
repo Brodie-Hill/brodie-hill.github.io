@@ -2,7 +2,7 @@
     {
         "name": "Unity",
         "group": "Tools",
-        "proficiency": 85
+        "proficiency": 80
     },
         {
         "name": "Unreal Engine",
@@ -12,12 +12,12 @@
         {
         "name": "GameMaker",
         "group": "Tools",
-        "proficiency": 60
+        "proficiency": 40
     },
     {
         "name": "Blender",
         "group": "Tools",
-        "proficiency": 35
+        "proficiency": 60
     },
     {
         "name": "GIMP",
@@ -32,22 +32,22 @@
     {
         "name": "C++",
         "group": "Languages",
-        "proficiency": 65
+        "proficiency": 70
     },
     {
         "name": "Java",
         "group": "Languages",
-        "proficiency": 50
+        "proficiency": 55
     },
     {
         "name": "JavaScript",
         "group": "Languages",
-        "proficiency": 25
+        "proficiency": 35
     },
     {
         "name": "HTML / XML",
         "group": "Languages",
-        "proficiency": 70
+        "proficiency": 60
     },
     {
         "name": "CSS",
@@ -57,7 +57,7 @@
     {
         "name": "HLSL / GLSL",
         "group": "Languages",
-        "proficiency": 45
+        "proficiency": 30
     },
     {
         "name": "OpenGL",
@@ -97,7 +97,7 @@
     {
         "name": "Physics Simulation",
         "group": "Concepts / Practices",
-        "proficiency": 65
+        "proficiency": 75
     },
     {
         "name": "Procedural Generation",

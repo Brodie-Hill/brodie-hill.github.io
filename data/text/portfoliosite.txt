@@ -1,0 +1,7 @@
+A single-page static site made to centralize links to my best projects and work. Hosted on github pages.
+
+This is the site you are currently on! I built this site to have a central place to link to my projects and work for showcase, and also to double as my resume.
+
+I built it using vanilla HTML, CSS, and JavaScript (my first time using js), and hosted it on Github Pages.
+Using Pages means free hosting, but no server side authority (since github fundamentally is just a file hosting service, no real web-server hosting).
+Because of this, I use client-side javascript to load content from json files to make it easy for me to update without duplicating raw HTML over and over.

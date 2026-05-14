@@ -6,6 +6,6 @@ My experience combines self-driven development with formal study, including coll
 
 I am detail-oriented, but naturally consider how individual systems and features fit into the wider project - what their requirements are, how they need to be used, and where they sit in the big picture. I focus on implementing versatile systems that integrate well and produce reliable, consistent gameplay outcomes, and I find satisfaction in seeing the final result function as intended within the game.
 
-Outside of development, I enjoy playing games, 3D printing, collecting vinyl records, and playing my baritone ukulele.
+Outside of development, I enjoy online gaming, 3D printing, collecting vinyl records, and playing my baritone ukulele.
 
 Currently working part-time in Nelson NZ, I am looking for full-time employment as a software developer, and am open to relocating or working remotely.

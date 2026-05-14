@@ -39,6 +39,10 @@
         "group": "Personal",
         "name": "Portfolio Website",
         "date": "Aug-Sep 2025",
+        "authors":
+        [
+            "Brodie Hill"
+        ],
         "tags":
         [
             "HTML",
@@ -47,8 +51,7 @@
         ],
         "blurb":
             "A static site made to centralize links to my best projects and work. Hosted on github pages.",
-        "description":
-            "A static site made to centralize links to my best projects and work. Hosted on github pages.",
+        "descriptionPath": "data/text/portfoliosite.txt",
         "media":
         [
 
@@ -58,7 +61,7 @@
         [
             {
                 "label": "Demo",
-                "a": "http://127.168.0.1:5500/index.html?returning",
+                "a": "https://brodie-hill.github.io/index.html?returning",
                 "feature": true
             }
         ],

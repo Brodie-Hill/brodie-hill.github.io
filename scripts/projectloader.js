@@ -133,6 +133,7 @@ function genCard(project)
 function genGroup(groupName, groupProjects)
 {
     const parent = document.createElement("div");
+    parent.id = `projectgrouping-${encodeURIComponent(groupName.toLowerCase())}`;
     parent.classList.add("project-group", "content", "sector-margin-blk-end", "content-margin-blk-start");
 
     const header = document.createElement("h2");
