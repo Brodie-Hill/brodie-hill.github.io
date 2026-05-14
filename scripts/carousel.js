@@ -1,12 +1,13 @@
 
-import kFade from "../css/dynamic-fade.css" with { type: "css" };
-import noScrollbar from "../css/no-scrollbar.css" with { type: "css" }
-import checker from "../css/checker-bg.css" with { type: "css" }
-import Range from "../scripts/range.js";
+//import kFade from "../css/dynamic-fade.css" with { type: "css" };
+//import noScrollbar from "../css/no-scrollbar.css" with { type: "css" }
+//import checker from "../css/checker-bg.css" with { type: "css" }
+import getSheetAsync from "./sheetImporter.js";
+import Range from "./range.js";
 
 export class KCarousel extends HTMLElement
 {
-    static #importedStyles = [kFade, noScrollbar, checker];
+    static #importedStyles = [];
 
     static #backing_defaultStyles = null;
     static get defaultStyles()
@@ -139,6 +140,21 @@ export class KCarousel extends HTMLElement
         return [];
     }
 
+    // replacement for modern import syntax (commented out at top), since it doesnt work on safari (specifically 'type: "css"' is invalid)
+    static async importCss()
+    {
+        if (this.#importedStyles.length != 0) return; // already imported
+
+        // pass array of tasks to load the styles and get back array of stylesheet object results
+        const tasks = [
+            getSheetAsync("../css/dynamic-fade.css"),
+            getSheetAsync("../css/no-scrollbar.css"),
+            getSheetAsync("../css/checker-bg.css")
+        ];
+        const [fade, noScroll, checker] = await Promise.all(tasks);
+
+        this.#importedStyles = [fade, noScroll, checker];
+    }
 
     #shadow = null;
     #pagiDotInputs = [];
@@ -287,5 +303,4 @@ export class KCarousel extends HTMLElement
     }
 }
 
-
-customElements.define("k-carousel", KCarousel);
+KCarousel.importCss().then(() => { customElements.define("k-carousel", KCarousel); });
