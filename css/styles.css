@@ -180,9 +180,12 @@ section#home #quicklinks
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 2em;
+    align-items: center;
+    gap: var(--space-sector-inl);
+    flex-wrap: wrap;
     position: absolute;
-    left:0;
+    left: 0;
+    right: 0;
     bottom: var(--space-sector-blk);
     width: 100%;
     transition: none;
@@ -600,6 +603,7 @@ k-carousel::part(nav-dot-active)
 
     section#home #quicklinks
     {    
+        gap: var(--space-sector-inl);
         opacity: 0.7;
         transition: opacity var(--trans-fast);
 

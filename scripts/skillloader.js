@@ -17,7 +17,7 @@ const shadow = "var(--shadow-light)"
 
 function evaluateProficiency(prof)
 {
-    return proficiencyGrades.find(grade => grade.lvl >= prof);
+    return proficiencyGrades.find(grade => grade.lvl > prof);
 }
 
 function changeGroup(newGroup)
