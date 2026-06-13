@@ -53,14 +53,17 @@ export function genTagRow(tags, additionalClasses = ["flex-horizontal", "content
         const chip = document.createElement("span");
         chip.classList.add("chip", "tag")
         chip.title = tag;
-        let tagIcon = document.createElement("img");
-        tagIcon.src = `${tagIconPath}${encodeURIComponent(tag.toLowerCase())}.png`;
-        tagIcon.onload = () =>
+        let logoInner = document.createElement("span");
+        let logoGraphic = document.createElement("img");
+        logoGraphic.src = `${tagIconPath}${encodeURIComponent(tag.toLowerCase())}.png`;
+        logoGraphic.onload = () =>
         {
             chip.classList.add("logo");
-            chip.appendChild(tagIcon);
+            logoInner.classList.add("logo-graphic", /*"nopad", "chip"*/);
+            logoInner.appendChild(logoGraphic);
+            chip.appendChild(logoInner);
         };
-        tagIcon.onerror = () =>
+        logoGraphic.onerror = () =>
         {
             chip.textContent = tag;
         };
