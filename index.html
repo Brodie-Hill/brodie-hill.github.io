@@ -1,240 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8">
-        
-        <title>My Portfolio</title>
-        
-        <!-- link stylesheets -->
-        <link rel="stylesheet" href="css/reset.css" />
 
-        <link rel="stylesheet" href="css/utils.css" />
-        <link rel="stylesheet" href="css/no-scrollbar.css" />
-        <link rel="stylesheet" href="css/dynamic-fade.css" />
-        <link rel="stylesheet" href="css/timeline-ul.css" />
-        <link rel="stylesheet" href="css/hamburger.css" />
+<head>
 
-        <link rel="stylesheet" href="css/styles.css" />
-        
-        <!-- immediate scripts -->
-        <script src="scripts/classtoggle.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
 
+    <title>My Portfolio</title>
+
+    <link rel="icon" type="image/x-icon" href="/graphical/favicon.ico" />
+
+    <!-- link stylesheets -->
+    <link rel="stylesheet" href="css/reset.css" />
+
+    <link rel="stylesheet" href="css/utils.css" />
+    <link rel="stylesheet" href="css/no-scrollbar.css" />
+    <link rel="stylesheet" href="css/dynamic-fade.css" />
+    <link rel="stylesheet" href="css/timeline-ul.css" />
+    <link rel="stylesheet" href="css/hamburger.css" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- immediate scripts -->
+    <script src="scripts/classtoggle.js"></script>
+
+    <script>
+        // set up global reset event
+        // addatching to window lets modules subscribe to this event without needing to know about each other
+        window.closeAll = function () {
+            // let modules subscribe to this event
+            window.dispatchEvent(new Event("closeAll"));
+        }
+    </script>
+
+    <script>
+        // for mobile nav mode, close hamburger / header if open
+        window.addEventListener("closeAll", () => {
+            removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav');
+        })
+    </script>
+    <!-- deferred scripts -->
+    <script type="module" src="scripts/p-dump.js" defer></script>
+    <script type="module" src="scripts/marquee.js" defer></script>
+    <script type="module" src="scripts/carousel.js" defer></script>
+
+    <script type="module" src="scripts/projectloader.js" defer></script>
+    <script type="module" src="scripts/projectviewer.js" defer></script>
+    <script src="scripts/skillloader.js" defer></script>
+</head>
+
+<body>
+    <header id="header-main">
         <script>
-            // set up global reset event
-            // addatching to window lets modules subscribe to this event without needing to know about each other
-            window.closeAll = function()
-            {
-                // let modules subscribe to this event
-                window.dispatchEvent(new Event("closeAll"));
-            }
-        </script>
+            let lastScr = 0;
+            const header = document.getElementById("header-main");
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > lastScr) header.classList.add("collapse")
+                else header.classList.remove("collapse")
 
-        <script>
-            // for mobile nav mode, close hamburger / header if open
-            window.addEventListener("closeAll", () => {
-                removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav');
+                lastScr = window.pageYOffset
             })
         </script>
-        <!-- deferred scripts -->
-        <script type="module" src="scripts/p-dump.js" defer></script>
-        <script type="module" src="scripts/marquee.js" defer></script>
-        <script type="module" src="scripts/carousel.js" defer></script>
-        
-        <script type="module" src="scripts/projectloader.js" defer></script>
-        <script type="module" src="scripts/projectviewer.js" defer></script>
-        <script src="scripts/skillloader.js" defer></script>
-    </head>
-    <body>
-        <header id="header-main">
-            <script>
-                let lastScr = 0;
-                const header = document.getElementById("header-main");
-                window.addEventListener("scroll", () =>
-                {
-                    if (window.pageYOffset > lastScr) header.classList.add("collapse")
-                    else header.classList.remove("collapse")
-
-                    lastScr = window.pageYOffset
-                })
-            </script>
-            <div class="content ignore-ptr-self">
-                <!-- <h1 style="align-self:center;">Title</h1> -->
-                <button id="main-nav-mobile" class="hamburger" aria-label="Toggle navigation menu" onclick="toggleClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav');">
-                    <!-- the bars of hamburger are styled from empty spans. using the unicode
+        <div class="content ignore-ptr-self">
+            <!-- <h1 style="align-self:center;">Title</h1> -->
+            <button id="main-nav-mobile" class="hamburger" aria-label="Toggle navigation menu"
+                onclick="toggleClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav');">
+                <!-- the bars of hamburger are styled from empty spans. using the unicode
                      char isnt as good as different browsers may render it differently. -->
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
 
-            <nav>
+        <nav>
+            <script>
+                //window.addEventListener("resize", () => { removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav'); });
+            </script>
+            <span class="break-line"></span>
+            <ul class="content" role="menu">
+                <li role="menuitem">
+                    <a class="large btn" href="#about" onclick="window.closeAll()">About</a>
+                </li>
+                <li role="menuitem">
+                    <a class="large btn" href="#projects" onclick="window.closeAll()">Portfolio</a>
+                </li>
+                <li role="menuitem">
+                    <a class="large btn" href="mailto:brodiehill.business@gmail.com?subject=Inquiry"
+                        onclick="window.closeAll()">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="grad-primary">
+            <div class="content">
                 <script>
-                    //window.addEventListener("resize", () => { removeClass('active', '.hamburger#main-nav-mobile', '#header-main', 'nav'); });
+                    const params = new URLSearchParams(window.location.search);
+
+                    const title = document.createElement("h1");
+
+                    const flag = !!(params.has("returning"));
+                    if (flag) title.innerHTML = `Welcome Back! I'm <span class="text-gradient grad-accent">Brodie</span>`;
+                    else title.innerHTML = `Hi, I'm <span class="text-gradient grad-accent">Brodie</span>`;
+                    document.currentScript.after(title);
                 </script>
-                <span class="break-line"></span>
-                <ul class="content" role="menu">
-                    <li role="menuitem">
-                        <a class="large btn" href="#about" onclick="window.closeAll()">About</a>
-                    </li>
-                    <li role="menuitem">
-                        <a class="large btn" href="#projects" onclick="window.closeAll()">Portfolio</a>
-                    </li>
-                    <li role="menuitem">
-                        <a class="large btn" href="mailto:brodiehill.business@gmail.com?subject=Inquiry" onclick="window.closeAll()">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="home" class="grad-primary">
-                <div class="content">
-                    <script>
-                        const params = new URLSearchParams(window.location.search);
-
-                        const title = document.createElement("h1");
-
-                        const flag = !!(params.has("returning"));
-                        if (flag) title.innerHTML = `Welcome Back! I'm <span class="text-gradient grad-accent">Brodie</span>`;
-                        else title.innerHTML = `Hi, I'm <span class="text-gradient grad-accent">Brodie</span>`;
-                        document.currentScript.after(title);
-                    </script>
-                    <h2 class="light section-head">Aspiring Software Engineer<br>Specializing in Game Development</h2>
-                    <a id="cta" class="large chip btn grad-accent shadow-dark-m" href="#projects"><b class="text-gradient grad-primary">View Featured Work</b></a>
-                    <div id="quicklinks">
-                        <a title="Github" class="large logo chip btn shadow-dark-m" href="//github.com/brodie-hill" target="_blank">
-                            <span class="logo-graphic nopad chip"><img class="square" src="graphical/github-mark-white.png" alt="GitHub icon" /></span>
-                            <span class="logo-graphic nopad chip img-full"><img class="" src="graphical/github_logo_white.png" alt="GitHub logo" /></span>
-                        </a>
-                        <a title="LinkedIn" class="large logo chip btn shadow-dark-m" href="//linkedin.com/in/brodie-hill-02b1b2416" target="_blank">
-                            <span class="logo-graphic nopad chip img-icon"><img class="square" src="graphical/LI-In-Bug-White.png" alt="LinkedIn icon" /></span>
-                            <span style="padding-inline: 15px;" class="logo-graphic nopad chip img-full"><img class="" src="graphical/LI-Logo-White.png" alt="LinkedIn logo" /></span>
-                        </a>
-                        <!-- Not yet made: -->
-                        <!--a title="Karapak Assets" class="large logo chip btn shadow-dark-m" href="//karapak.github.io" target="_blank">
+                <h2 class="light section-head">Software Engineer<br>Specializing in Game Development</h2>
+                <a id="cta" class="large chip btn grad-accent shadow-dark-m" href="#projects"><b
+                        class="text-gradient grad-primary">View Featured Work</b></a>
+                <div id="quicklinks">
+                    <a title="Github" class="large logo chip btn shadow-dark-m" href="//github.com/brodie-hill"
+                        target="_blank">
+                        <span class="logo-graphic nopad chip"><img class="square" src="graphical/github-mark-white.png"
+                                alt="GitHub icon" /></span>
+                        <span class="logo-graphic nopad chip img-full"><img class=""
+                                src="graphical/github_logo_white.png" alt="GitHub logo" /></span>
+                    </a>
+                    <a title="LinkedIn" class="large logo chip btn shadow-dark-m"
+                        href="//linkedin.com/in/brodie-hill-02b1b2416" target="_blank">
+                        <span class="logo-graphic nopad chip img-icon"><img class="square"
+                                src="graphical/LI-In-Bug-White.png" alt="LinkedIn icon" /></span>
+                        <span style="padding-inline: 15px;" class="logo-graphic nopad chip img-full"><img class=""
+                                src="graphical/LI-Logo-White.png" alt="LinkedIn logo" /></span>
+                    </a>
+                    <!-- Not yet made: -->
+                    <!--a title="Karapak Assets" class="large logo chip btn shadow-dark-m" href="//karapak.github.io" target="_blank">
                             <img class="img-icon chip" src="graphical/Karapak_Icon.png" alt="Karapak icon" />
                             <img class="img-full chip" src="graphical/Karapak_Full.png" alt="Karapak logo" />
                         </a-->
-                    </div>
                 </div>
-            </section>
-            <span class="break-page"></span>
-            <section id="about" class="sector-padding-blk">
-                <article class="content content-gap">
-                    <img class="grad-light" src="data/img_background.jpg" />
-                    <div>
-                        <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Background</h3>
-                        <span class="break-line"></span>
-                        <p class="k-fade scroll content-margin content-padding-inl" data-file="data/about-me.txt">
+            </div>
+        </section>
+        <span class="break-page"></span>
+        <section id="about" class="sector-padding-blk">
+            <article class="content content-gap">
+                <img class="grad-light" src="data/img_background.jpg" />
+                <div>
+                    <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Background</h3>
+                    <span class="break-line"></span>
+                    <p class="k-fade scroll content-margin content-padding-inl" data-file="data/about-me.txt">
+                        <!-- populated by js -->
+                    </p>
+                    <span class="break-line"></span>
+                </div>
+            </article>
+            <article class="content content-gap sector-margin-blk">
+                <img class="grad-light" src="data/img_skills.jpg" />
+                <div>
+                    <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Skills</h3>
+                    <span class="break-line"></span>
+                    <div class="k-fade scroll content-margin content-padding-inl">
+                        <select id="skill-category" class="content-margin-blk btn centered" style="margin-inline: auto;"
+                            onchange="changeGroup(this.value)">
                             <!-- populated by js -->
+                        </select>
+                        <div id="skills">
+                            <!-- populated by js -->
+                        </div>
+                    </div>
+                    <span class="break-line"></span>
+                </div>
+            </article>
+            <article class="content content-gap sector-margin-blk">
+                <img class="grad-light" src="data/img_education.jpg" />
+                <div>
+                    <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Education & Experience</h3>
+                    <span class="break-line"></span>
+                    <div class="k-fade scroll content-margin content-padding-inl">
+                        <p class="centered">
+                            Official transcript and degree verification available upon email request:<br>
+                            <button class="btn grad-primary text-gradient heavy"
+                                onclick="window.location.href=`mailto:brodiehill.business@gmail.com?subject=Qualification%20Verification%20Request`; window.closeAll()">Send
+                                Email</button>
                         </p>
-                        <span class="break-line"></span>
-                    </div>
-                </article>
-                <article class="content content-gap sector-margin-blk">
-                    <img class="grad-light" src="data/img_skills.jpg" />
-                    <div>
-                        <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Skills</h3>
-                        <span class="break-line"></span>
-                        <div class="k-fade scroll content-margin content-padding-inl">
-                            <select id="skill-category" class="content-margin-blk btn centered" style="margin-inline: auto;" onchange="changeGroup(this.value)">
-                                <!-- populated by js -->
-                            </select>
-                            <div id="skills">
-                                <!-- populated by js -->
-                            </div>
-                        </div>
-                        <span class="break-line"></span>
-                    </div>
-                </article>
-                <article class="content content-gap sector-margin-blk">
-                    <img class="grad-light" src="data/img_education.jpg" />
-                    <div>
-                        <h3 class="content-padding-blk nopad-top sector-padding-inl centered">Education & Experience</h3>
-                        <span class="break-line"></span>
-                        <div class="k-fade scroll content-margin content-padding-inl">
-                            <p class="centered">
-                                Official transcript and degree verification available upon email request:<br>
-                                <button class="btn grad-primary text-gradient heavy" onclick="window.location.href=`mailto:brodiehill.business@gmail.com?subject=Qualification%20Verification%20Request`; window.closeAll()">Send Email</button>
-                            </p>
 
-                            <ul class="timeline-vertical">
-                                <li class="marker">
-                                    <h4 class="bullet"></h4>
-                                </li>
-                                <li>
-                                    <h4>Media Design School</h4>
-                                    <p class="content-padding-inl light">2022-2025 • Graduated</p>
-                                    <p class="content-padding-inl">Bachelor of Software Engineering (Game Programming).</p>
-                                </li>
-                                <li class="marker">
-                                    <h4 class="bullet"></h4>
-                                </li>
-                                <li>
-                                    <h4>Victoria University of Wellington</h4>
-                                    <p class="content-padding-inl light">2021 • Transferred to MDS</p>
-                                    <p class="content-padding-inl">Bachelor of Software Engineering (Hons).</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <span class="break-line"></span>
+                        <ul class="timeline-vertical">
+                            <li class="marker">
+                                <h4 class="bullet"></h4>
+                            </li>
+                            <li>
+                                <h4>Media Design School</h4>
+                                <p class="content-padding-inl light">2022-2025 • Graduated</p>
+                                <p class="content-padding-inl">Bachelor of Software Engineering (Game Programming).</p>
+                            </li>
+                            <li class="marker">
+                                <h4 class="bullet"></h4>
+                            </li>
+                            <li>
+                                <h4>Victoria University of Wellington</h4>
+                                <p class="content-padding-inl light">2021 • Transferred to MDS</p>
+                                <p class="content-padding-inl">Bachelor of Software Engineering (Hons).</p>
+                            </li>
+                        </ul>
                     </div>
-                </article>
-            </section>
-            <span class="break-page"></span>
-            <section id="projects">
-                <h1 class="centered sector-margin-blk sector-padding-inl">Projects</h1>
-                <div id="projects-container">
-                    <!-- populated by js -->
+                    <span class="break-line"></span>
                 </div>
+            </article>
+        </section>
+        <span class="break-page"></span>
+        <section id="projects">
+            <h1 class="centered sector-margin-blk sector-padding-inl">Projects</h1>
+            <div id="projects-container">
+                <!-- populated by js -->
+            </div>
 
 
-                <div id="project-viewer-overlay" class="content-padding-inl sector-padding-blk tint-dark" style="padding-top:var(--header-height);">
-                    <div id="project-viewer" class="grad-dark content">
+            <div id="project-viewer-overlay" class="content-padding-inl sector-padding-blk tint-dark"
+                style="padding-top:var(--header-height);">
+                <div id="project-viewer" class="grad-dark content">
 
-                            <div id="pv-info" class="light flex-horizontal content-gap"><span>groupname</span><span>date</span></div>
-                            <h2 id="pv-name"> Demo Title</h2>
-                            <div id="pv-tags"></div>                        <div id="pv-content">
-                            <div class="flex-dynamic-2 content-gap">
-                                <k-carousel id="pv-media" class="text-area" style="flex:1.2;" autoplay>
-                                    <!-- populated by js -->
-                                </k-carousel>
-                                <div id="pv-about" class="text-area">
-                                    <div class="k-fade no-scrollbar">
-                                        <h3>About</h3>
-                                        <p id="pv-description"></p>
-                                        <br>
-                                        <h3>Credits</h3>
-                                        <ul id="pv-credits">
+                    <div id="pv-info" class="light flex-horizontal content-gap"><span>groupname</span><span>date</span>
+                    </div>
+                    <h2 id="pv-name"> Demo Title</h2>
+                    <div id="pv-tags"></div>
+                    <div id="pv-content">
+                        <div class="flex-dynamic-2 content-gap">
+                            <k-carousel id="pv-media" class="text-area" style="flex:1.2;" autoplay>
+                                <!-- populated by js -->
+                            </k-carousel>
+                            <div id="pv-about" class="text-area">
+                                <div class="k-fade no-scrollbar">
+                                    <h3>About</h3>
+                                    <p id="pv-description"></p>
+                                    <br>
+                                    <h3>Credits</h3>
+                                    <ul id="pv-credits">
 
-                                        </ul>
-                                    </div>
-                                </div>                
-
+                                    </ul>
+                                </div>
                             </div>
-                            <div id="links" class="text-area">
-                                <ul id="pv-speclinks" class="flex-horizontal content-gap"></ul>
-                                <ul id="pv-misclinks"></ul>
-                            </div>
+
                         </div>
-                        <div class="flex-horizontal" style="flex: 1; justify-content: flex-end; align-items: flex-end;">
-                            <button id="pv-close" class="btn chip grad-primary color-light">Close</span>
+                        <div id="links" class="text-area">
+                            <ul id="pv-speclinks" class="flex-horizontal content-gap"></ul>
+                            <ul id="pv-misclinks"></ul>
                         </div>
+                    </div>
+                    <div class="flex-horizontal" style="flex: 1; justify-content: flex-end; align-items: flex-end;">
+                        <button id="pv-close" class="btn chip grad-primary color-light">Close</span>
                     </div>
                 </div>
+            </div>
 
 
-            </section>
-            <span class="break-page"></span>
-        </main>
-        <footer class="grad-dark sector-padding-blk">
-            <p class="centered content-margin-blk">
-                <a href="mailto:brodiehill.business@gmail.com">brodiehill.business@gmail.com</a>
-                <br><br>
-                &copy; Brodie Hill 2026
-            </p>
-        </footer>
-    </body>
+        </section>
+        <span class="break-page"></span>
+    </main>
+    <footer class="grad-dark sector-padding-blk">
+        <p class="centered content-margin-blk">
+            <a href="mailto:brodiehill.business@gmail.com">brodiehill.business@gmail.com</a>
+            <br><br>
+            &copy; Brodie Hill 2026
+        </p>
+    </footer>
+</body>
+
 </html>
