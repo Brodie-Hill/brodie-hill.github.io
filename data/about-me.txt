@@ -1,4 +1,4 @@
-An aspiring Software Developer with an interest in game development and system design. I am a Bachelor of Software Engineering (Game Programming) graduate from Media Design School (Auckland 2025), completed remotely while based in Nelson. 
+A graduate software engineer with a strong interest in game development and system design. I am a Bachelor of Software Engineering (Game Programming) graduate from Media Design School (Auckland 2025), completed remotely while based in Nelson. 
 
 I like building clean, reusable gameplay systems in Unity and C#, with a preference for versatile systems and reusability rather than one-off solutions.
 
