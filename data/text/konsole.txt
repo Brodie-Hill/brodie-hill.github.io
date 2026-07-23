@@ -1,0 +1,2 @@
+A project started during my time at Media Design School for a Plugin-Development course.
+It was shelved for a while but I plan to complete and publish it as a paid asset on the Unity Asset Store this year.

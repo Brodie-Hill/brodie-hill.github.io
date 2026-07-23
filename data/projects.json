@@ -1,27 +1,37 @@
 [
     {
+        "group": "Personal - Upcoming",
+        "name": "Konsole",
+        "date": "TBD 2026",
+        "authors": [
+            "Brodie Hill"
+        ],
+        "tags": [
+            "C#",
+            "Unity"
+        ],
+        "blurb": "A powerful command parser for Unity apps and games. Debugging, Testing, Player Cheats, and more!",
+        "descriptionPath": "data/text/konsole.txt",
+        "media": [],
+        "links": [],
+        "thumbnail": "Karapak_Full.png",
+        "order": 1
+    },
+    {
         "group": "Personal",
         "name": "Commit Msg Generator",
         "date": "June 2025",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill"
         ],
-        "tags":
-        [
+        "tags": [
             "c++",
             "xml"
         ],
-        "blurb":
-            "A simple console wizard to help generate consistent commit messages using XML templates.",
-        "descriptionPath": 
-            "data/text/cmg.txt",
-        "media":
-        [
-
-        ],
-        "links":
-        [
+        "blurb": "A simple console wizard to help generate consistent commit messages using XML templates.",
+        "descriptionPath": "data/text/cmg.txt",
+        "media": [],
+        "links": [
             {
                 "label": "Download Exe (Windows)",
                 "a": "https://github.com/Brodie-Hill/commit-message-generator/releases/tag/Release",
@@ -39,26 +49,19 @@
         "group": "Personal",
         "name": "Portfolio Website",
         "date": "Aug-Sep 2025",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill"
         ],
-        "tags":
-        [
+        "tags": [
             "HTML",
             "CSS",
             "JavaScript"
         ],
-        "blurb":
-            "A static site made to centralize links to my best projects and work. Hosted on github pages.",
+        "blurb": "A static site made to centralize links to my best projects and work. Hosted on github pages.",
         "descriptionPath": "data/text/portfoliosite.txt",
-        "media":
-        [
-
-        ],
+        "media": [],
         "thumbnail": "project-portfoliosite-0.png",
-        "links":
-        [
+        "links": [
             {
                 "label": "Demo",
                 "a": "https://brodie-hill.github.io/index.html?returning",
@@ -71,24 +74,19 @@
         "group": "Media Design School",
         "name": "Corridors of Time",
         "date": "June 2024 - July 2025",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill - Game Programmer",
             "Jason Day - Art Assets and Game Design",
             "Charlie Davies - Enemy and AI Programmer"
         ],
-        "tags":
-        [
+        "tags": [
             "Unity",
             "C#"
         ],
-        "blurb":
-            "Final year-long project from my time at Media Design School.",
-        "descriptionPath": 
-            "data/text/cot.txt",
+        "blurb": "Final year-long project from my time at Media Design School.",
+        "descriptionPath": "data/text/cot.txt",
         "thumbnail": "project-cot-0.mp4",
-        "media":
-        [
+        "media": [
             "project-cot-0.mp4",
             "project-cot-1.png",
             "project-cot-2.png",
@@ -97,75 +95,57 @@
             "project-cot-5.png",
             "project-cot-6.png"
         ],
-        "links":
-        [
-
-        ],
+        "links": [],
         "order": 1
     },
     {
         "group": "Media Design School",
         "name": "Last Stand 2D",
         "date": "2023",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill"
         ],
-        "tags":
-        [
+        "tags": [
             "C++",
             "SFML"
         ],
-        "blurb":
-            "C++ zombie slayer game.",
-        "description": 
-            "Simple C++ zombie slayer game. This was my fist raw C++ game project.",
+        "blurb": "C++ zombie slayer game.",
+        "description": "Simple C++ zombie slayer game. This was my fist raw C++ game project.",
         "thumbnail": "project-laststand-1.png",
-        "media":
-        [
+        "media": [
             "project-laststand-0.mp4",
             "project-laststand-0.png",
             "project-laststand-1.png"
         ],
-        "links":
-        [
-            
-        ],
+        "links": [],
         "order": 1
     },
     {
         "group": "Media Design School",
         "name": "Defender: World",
         "date": "2022",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill"
         ],
-        "tags":
-        [
+        "tags": [
             "Gamemaker"
         ],
-        "blurb":
-            "Remake with a twist on the original arcade game 'Defender'.",
-        "descriptionPath": 
-            "data/text/defender.txt",
+        "blurb": "Remake with a twist on the original arcade game 'Defender'.",
+        "descriptionPath": "data/text/defender.txt",
         "thumbnail": "project-defender-1.png",
-        "media":
-        [
+        "media": [
             "project-defender-0.mp4",
             "project-defender-1.png",
             "project-defender-2.png",
             "project-defender-3.png",
             "project-defender-4.png"
         ],
-        "links":
-        [
+        "links": [
             {
                 "label": "Download exe (Google Drive)",
                 "a": "https://drive.google.com/file/d/1Z2MmqIGCQgRJsbJdKnJzznFxU5BU6f36/view?usp=drive_link",
                 "feature": true
             }
-
         ],
         "order": 1
     },
@@ -173,56 +153,42 @@
         "group": "Media Design School",
         "name": "Atmospheric Ray-Marching",
         "date": "2024",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill"
         ],
-        "tags":
-        [
+        "tags": [
             "Unity",
             "C#",
             "GLSL"
         ],
-        "blurb":
-            "An experiment with ray-marching.",
-        "description": 
-            "An experiment with ray-marching.",
+        "blurb": "An experiment with ray-marching.",
+        "description": "An experiment with ray-marching.",
         "thumbnail": "project-atmos-1.png",
-        "media":
-        [
+        "media": [
             "project-atmos-0.mp4",
             "project-atmos-1.png"
         ],
-        "links":
-        [
-
-        ]
+        "links": []
     },
     {
         "group": "Media Design School",
         "name": "2 Days a Rancher",
         "date": "2024",
-        "authors":
-        [
+        "authors": [
             "Brodie Hill"
         ],
-        "tags":
-        [
+        "tags": [
             "Unity",
             "C#"
         ],
-        "blurb":
-            "Protect the alpaca herd!",
-        "description": 
-            "This Project is from an AI paper showcasing a simple wolf AI in action, the player must fend off progressing numbers of woves which have a dual goal to attach the alpaca herd, and secondarily attack the player in self-defense.",
+        "blurb": "Protect the alpaca herd!",
+        "description": "This Project is from an AI paper showcasing a simple wolf AI in action, the player must fend off progressing numbers of woves which have a dual goal to attach the alpaca herd, and secondarily attack the player in self-defense.",
         "thumbnail": "",
-        "media":
-        [
+        "media": [
             "project-2dar-0.png",
             "project-2dar-1.png"
         ],
-        "links":
-        [
+        "links": [
             {
                 "label": "Download Exe (Google Drive)",
                 "a": "https://drive.google.com/file/d/1A9HpMeJWvpb66dZe0bHHLh-8L1NmY3WF/view?usp=sharing",
